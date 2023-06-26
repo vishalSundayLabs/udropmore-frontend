@@ -1,0 +1,64 @@
+.header-paynow {
+    display: flex;
+    justify-content: center;
+}
+
+.final-price {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+.final-price-box {
+    margin-right: 50px;
+    margin-left: 50px;
+}
+
+.final-price-box p:nth-child(1) {
+    font-family: Clash Display;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0.05em;
+    text-align: left;
+    color: rgba(255, 255, 255, 1);
+
+}
+
+.final-price-box p:nth-child(2) {
+    font-family: Clash Display;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 36px;
+    letter-spacing: 0.05em;
+    text-align: left;
+    color: rgba(255, 255, 255, 0.6);
+
+}
+
+.final-price-box .text-only {
+    font-family: Clash Display !important;
+    font-size: 24px !important;
+    font-weight: 600 !important;
+    line-height: 36px !important;
+    letter-spacing: 0.05em !important;
+    text-align: left !important;
+    color: rgba(255, 255, 255, 1) !important;
+
+}
+
+.circle-right-paynow {
+    position: absolute;
+    width: 180px;
+    height: 188px;
+      -webkit-filter: blur(15px);
+    -moz-filter: blur(15px);
+    -o-filter: blur(15px);
+    -ms-filter: blur(15px);
+    filter: blur(50px);
+    background: rgba(40, 115, 254, 0.4);
+    border-radius: 50%;
+    top: 400px;
+    left: 1326px;
+     z-index: -9;
+  }

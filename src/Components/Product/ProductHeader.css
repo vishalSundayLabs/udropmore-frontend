@@ -1,0 +1,13 @@
+.product-header {
+   height: 450px;
+}
+
+.product-img {
+    height: 450px;
+    width: 30%;
+    filter:brightness(4px) ;
+}
+.product-header-img {
+    display: flex;
+    justify-content: center;
+}
