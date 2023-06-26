@@ -79,6 +79,7 @@ const Header = () => {
               : "/img/image_1-removebg-preview 1 copy.svg"
           }
           width={"100%"}
+          height={"100%"}
           style={{ objectFit: "cover" }}
         />{" "}
       </div>

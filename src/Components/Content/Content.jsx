@@ -9,6 +9,7 @@ import Timer from "../Timer/Timer";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+import {GrPrevious} from "react-icons/gr"
 
 const Content = () => {
   const [auctions, setAuctions] = useState(["a", "b", "b", 2, 3, 5, 6, 7, 7]);
@@ -28,7 +29,7 @@ const Content = () => {
   };
   useEffect(() => {
     fetchData();
-    return () => {};
+    return () => { };
   }, []);
 
   const handleParticipate = async (auctionId, userId) => {
@@ -50,7 +51,7 @@ const Content = () => {
   };
 
   return (
-    <>
+    <div className="product_carousel">
       <Carousel
         show={4}
         slide={1}
@@ -59,6 +60,9 @@ const Content = () => {
         dynamic={true}
         useArrowKeys={true}
         hideArrows={false}
+        // nextArrow={<GrPrevious fontSize="1.5em"  color="white"/>}
+        
+        
       >
         {auctions.map((item, index) => {
           return (
@@ -74,14 +78,14 @@ const Content = () => {
                 src="/img/WhatsApp Image 2023-06-06 at 15.40 4.svg"
                 width={"100%"}
               />
-              <button onClick={() => handleParticipate(item._id, userId)}>
+              <button className="font-semibold" style={{fontSize: '14px'}} onClick={() => handleParticipate(item._id, userId)}>
                 Participate
               </button>
             </div>
           );
         })}
       </Carousel>
-    </>
+    </div>
   );
 };
 

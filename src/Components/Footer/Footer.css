@@ -1,69 +1,119 @@
-
-.footer{
-    background-color: #363636;
+.footer {
+    background-color: #111111;
     display: flex;
     padding: 2rem 4rem;
     justify-content: space-between;
 }
-.footer-click{
+
+.footer-click {
     display: flex;
-    gap:2rem
+    gap: 2rem
 }
-.footer h4{
+
+.footer h4 {
     color: #fff;
 }
-.footer p{
+
+.footer p {
     color: #fff;
     line-height: 30px;
 }
-.logo-bg{
-background: rgba(255, 255, 255, 0.03);
-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset -1px -1px 4px rgba(255, 255, 255, 0.15), inset 3px 5px 3px rgba(255, 255, 255, 0.15);
-backdrop-filter: blur(114px);
-border-radius: 10px;
-padding: 0.3rem;
+
+.logo-bg {
+    background: rgba(255, 255, 255, 0.03);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset -1px -1px 4px rgba(255, 255, 255, 0.15), inset 3px 5px 3px rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(114px);
+    border-radius: 10px;
+    padding: 0.3rem;
 }
-.input-submit{
+
+.social_icon {
+    padding: 0.5rem;
+}
+
+
+.input-submit {
     display: flex;
     position: relative;
 }
-.input-submit input,.input-submit button{
+
+.input-submit input,
+.input-submit button {
     background: rgba(255, 255, 255, 0.05);
-border: 0.6px solid rgba(255, 255, 255, 0.1);
-border-radius: 8px;
-padding: 0.5rem;
+    border: 0.6px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 0.5rem;
 }
-.input-submit input{
+
+.input-submit input {
     outline: 0px;
     width: 17rem;
 }
-.input-submit button{
+
+.input-submit button {
     position: absolute;
     width: 5rem;
     right: 1px;
     z-index: 10;
     background-color: rgba(255, 255, 255, 0.35);
 }
+
+.toggleShow{
+    display: none;
+}
+
+
 @media screen and (max-width:800px) {
-    .footer{
-    flex-direction: column;
-    gap:0.4rem;
-    overflow:hidden;
-    /* width: 100%; */
+    .footer {
+        flex-direction: column;
+        gap: 0.4rem;
+        overflow: hidden;
+        /* width: 100%; */
+    }
+
+    .social_container{
+        margin-top: 2rem !important;
+    }
+
+    .input-submit {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .input-submit input {
+
+        width: 10rem;
+    }
+
+    .input-submit button {
+        position: relative;
+        width: 6rem;
+        right: 10px;
+
+    }
+
+    .footer_wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .toggleShow{
+        display: block;
+    }
+
+    .hide{
+        display: none;
+    }
+
+    .responsive_text{
+        font-weight: 300;
+        color: #FFFFFF99;
+    }
+
+
+
 }
-.input-submit {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-}
-.input-submit input{
-    
-    width:10rem;
-}
-.input-submit button{
-    position: relative;
-    width: 6rem;
-    right: 10px;
-    
-}
-}
+
