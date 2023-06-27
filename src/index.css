@@ -15,8 +15,13 @@ body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+<<<<<<< HEAD
   background: #111111;
 
+=======
+  /* background: rgba(0, 0, 0, 0.73); */
+  background-color: #111111;
+>>>>>>> f4d629531e6b2196a6a8facb4a0495e929d37194
 }
 
 svg {
