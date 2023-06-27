@@ -61,8 +61,6 @@ const Content = () => {
         useArrowKeys={true}
         hideArrows={false}
         // nextArrow={<GrPrevious fontSize="1.5em"  color="white"/>}
-        
-        
       >
         {auctions.map((item, index) => {
           return (
