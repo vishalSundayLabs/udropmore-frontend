@@ -12,7 +12,7 @@ import { Link, useNavigate } from "react-router-dom";
 import {GrPrevious} from "react-icons/gr"
 
 const Content = () => {
-  const [auctions, setAuctions] = useState(["a", "b", "b", 2, 3, 5, 6, 7, 7]);
+  const [auctions, setAuctions] = useState([]);
   const userId = localStorage.getItem("userId");
   const navigate = useNavigate();
 
