@@ -1,5 +1,5 @@
 .product-header {
-   height: 450px;
+   height: 0px;
 }
 
 .product-img {
@@ -10,4 +10,5 @@
 .product-header-img {
     display: flex;
     justify-content: center;
+    flex-direction: row;
 }

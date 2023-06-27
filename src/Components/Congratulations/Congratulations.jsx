@@ -39,9 +39,9 @@ const Congratulations = () => {
                 fill="white"
               />
             </svg>
-            <div className="round-box">
+            {/* <div className="round-box">
               <p>0</p>
-            </div>
+            </div> */}
             <div className="outer-box">
               <svg
                 width="17"
@@ -75,44 +75,37 @@ const Congratulations = () => {
             </div>
           </p>{" "}
         </div>
+        <div className="circle-left"></div>
         <div className="header-bg header-imgs">
           <img
-            src={
-              window?.innerWidth > 800
-                ? "/img/BACKGROUND.svg"
-                : "/img/BACKGROUND.svg"
+            src={"/img/cong.svg"
+
             }
             width={"25%"}
             style={{ objectFit: "cover", height: "10px !important" }}
-          />{" "}
+          />
           <img
-            src={
-              window?.innerWidth > 800
-                ? "/img/BACKGROUND.svg"
-                : "/img/BACKGROUND.svg"
+            src={ "/img/Group (2).svg"
+     
             }
-            width={"25%"}
+            width={"22%"}
+            className="header-imgs2"
             style={{ objectFit: "cover", height: "10px !important" }}
-          />{" "}
-          <img
-            src={
-              window?.innerWidth > 800
-                ? "/img/BACKGROUND.svg"
-                : "/img/BACKGROUND.svg"
+          />
+           <img
+            src={"/img/BACKGROUND.svg"
+                
             }
-            width={"25%"}
+            width={"22%"}
+            className="header-imgs2"
             style={{ objectFit: "cover", height: "10px !important" }}
-          />{" "}
-          <img
-            src={
-              window?.innerWidth > 800
-                ? "/img/BACKGROUND.svg"
-                : "/img/BACKGROUND.svg"
-            }
-            width={"25%"}
-            style={{ objectFit: "cover", height: "10px !important" }}
-          />{" "}
+          />
         </div>
+      </div>
+    <div className="outer-box-ring">
+    <div className="outer-text">
+      <h1>Congratulations!</h1>
+        <p>You have won this drop</p>
       </div>
       <div className="round-ring">
         <svg
@@ -172,12 +165,12 @@ const Congratulations = () => {
         </svg>
       </div>
       <div className="congratulations-text-box">
-        <h1>Congratulations!</h1>
-        <p>You have won this drop</p>
         <button className="shop-now">
         <strong>Go To Pay Now</strong>
       </button>
       </div>
+    </div>
+    <div className="footer-width"></div>
       <Footer />
     </>
   );
