@@ -25,17 +25,12 @@ function App() {
       <Route exact path="/" element={<Home />} />
       <Route exact path="/login" element={<Auth />} />
       <Route exact path="/product" element={<Product />} />
-      {/* <Route exact path="/congratulations" element={<Congratulations />} /> */}
-      <Route exact path="/congratulations" element={<Congratulations2 />} />
       <Route exact path="/orders" element={<Orders />} />
       <Route exact path="/addmoney" element={<AddMoney />} />
-      <Route exact path="/congratulations" element={<Congratulations />} />
-      <Route exact path="/congratulations2" element={<Congratulations2 />} />
-      <Route exact path="/congratulations3" element={<Congrats3 />} />
+      <Route exact path="/congratulations" element={<Congrats3 />} />
       <Route exact path="/profile" element={<Profile />} />
       <Route exact path="/wallet" element={<Wallet />} />
       <Route exact path="/tnc" element={<TermsNconditions/>} />
-      {/* <Route exact path="/Congratulations" element={<Congratulations />} /> */}
       <Route exact path="/paynow" element={<PayNow />} />
       <Route exact path="/shop/now" element={<Product2 />} />
       <Route exact path="/product2" element={<Product3 />} />
