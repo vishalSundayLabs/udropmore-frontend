@@ -43,9 +43,9 @@
 .product_carousel {
     position: relative;
     background-color: #111111;
-  }
-  
-  .carousel-arrows {
+}
+
+.carousel-arrows {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -54,9 +54,9 @@
     justify-content: space-between;
     align-items: center;
     z-index: 1;
-  }
-  
-  .carousel-arrow {
+}
+
+.carousel-arrow {
     background-color: transparent;
     border: none;
     cursor: pointer;
@@ -65,8 +65,8 @@
     outline: none;
     font-size: 20px;
     color: black;
-  }
-  
+}
+
 
 
 @media screen and (max-width:800px) {
@@ -112,4 +112,13 @@
     margin-top: 24px;
     position: fixed;
     display: none;
+}
+
+.timer-title {
+    color: rgba(255, 0, 0, 0.80);
+    font-size: 12px;
+    font-family: Share Tech;
+    line-height: 160%;
+    letter-spacing: 11.68px;
+    text-transform: uppercase;
 }

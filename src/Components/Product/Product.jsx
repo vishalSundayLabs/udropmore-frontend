@@ -5,6 +5,7 @@ import ProductHeader from "./ProductHeader";
 import "./Product.css";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { FlipDate } from "../flipTimer/FlipDate";
 
 const Product = () => {
   const [product, setProduct] = useState({});
@@ -46,7 +47,11 @@ const Product = () => {
               className="flex flex-col align-h items-center h-96 w-full h-96  bg-cover bg-center"
               style={{ color: "black" }}
             >
-              <div className="flex w-96 ">{/* <Timer inter={9000000}/> */}</div>
+              <div className="flex w-96 ">
+              <h1 className="text-2xl">
+                    <FlipDate value={auction.startTime} />
+                  </h1>
+              </div>
               <div className="flex mb-4 gap-2 align-h">
                 <div className="price-box w-20  h-24 lg:w-40 md:w-40 sm:w-25  ">
                   <p>Market Price</p>
