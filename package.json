@@ -5,6 +5,7 @@
   "dependencies": {
     "@leenguyen/react-flip-clock-countdown": "^1.4.0",
     "@pqina/flip": "1.7.5",
+    "@pqina/flip": "1.7.5",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -23,6 +24,7 @@
     "react-icons": "^4.10.1",
     "react-multi-carousel": "^2.8.4",
     "react-polling": "^1.0.9",
+    "react-paginate": "^8.2.0",
     "react-responsive-carousel": "^3.2.23",
     "react-router-dom": "^6.13.0",
     "react-scripts": "5.0.1",

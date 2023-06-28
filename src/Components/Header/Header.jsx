@@ -1,13 +1,32 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import "./Header.css";
 
-import webVideo from "../../assets/vids/webHeader.mp4"
+import webVideo from "../../assets/vids/webHeader.mp4";
 import Navbar from "../Navbar/Navbar";
 
 const Header = () => {
+    const videoRef = useRef(null);
+
+    useEffect(() => {
+        const video = videoRef.current;
+
+        const playPromise = video.play();
+
+        if (playPromise !== undefined) {
+            playPromise
+                .then(() => {
+                    // Autoplay started successfully
+                })
+                .catch((error) => {
+                    // Autoplay failed, handle the error
+                    console.error("Autoplay failed:", error);
+                });
+        }
+    }, []);
+
     return (
         <div className="header">
-            <Navbar/>
+            <Navbar />
             <div className="header-bg">
                 {/* <img
                     src={
@@ -21,6 +40,8 @@ const Header = () => {
                 />{" "} */}
 
                 <video
+                    ref={videoRef}
+                    id="myVideo"
                     autoPlay
                     loop
                     muted
