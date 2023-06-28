@@ -1,0 +1,55 @@
+.wallet_wrapper {
+    .wallet_container {
+        .transactions {
+            width: 85%;
+            margin: auto;
+
+            .head {
+            }
+
+            .transaction_info {
+
+                .info {
+                    display: flex;
+                    justify-content: space-between;
+                    color: white;
+                    border-bottom: 1px solid #38393b;
+                padding-bottom: 16px;
+                margin-top: 10px;
+
+                    .info_left {
+                        display: flex;
+                        align-items: center;
+                        gap: 10px;
+                        color: white;
+                        font-size: 14px;
+                        font-weight: 500;
+
+                        .left_img {
+                            background-color: #4e4e4e;
+                            border: 1px solid white;
+                            height: 52px;
+                            width: 52px;
+                            border-radius: 50%;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .wallet_wrapper {
+        .wallet_container {
+            width: 76% !important;
+        }
+
+        .transactions {
+            width: 100% !important;
+        }
+    }
+}
