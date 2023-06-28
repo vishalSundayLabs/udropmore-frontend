@@ -1,5 +1,6 @@
 import React from "react";
 import Footer from "../Footer/Footer";
+import Modal from "../Modal/Modal";
 import Navbar from "../Navbar/Navbar";
 import Timer from "../Timer/Timer";
 import ProductHeader from "./ProductHeader";
@@ -69,13 +70,19 @@ const Product3 = () => {
                                 </div>
 
                                 <button
-                                    className="shop-now rounded-lg px-4 py-2 my-5 text-white cursor-pointer"
+                                    className="shop-now rounded-lg px-4 py-2 my-5 text-white cursor-pointer  block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                                     disabled
+
+                                    data-modal-target="defaultModal"
+                                    data-modal-toggle="defaultModal"
+                                    type="button"
                                     style={{width:'300px', fontWeight: '700', fontSize:'20px'}}
                                 >
                                     Participate
                                 </button>
+                            <Modal/>
                             </div>
+
                         </div>
                     </div>
                 </div>
