@@ -15,6 +15,7 @@ import { FlipDate } from "../flipTimer/FlipDate";
 const Content = () => {
     const userId = localStorage.getItem("userId");
     const navigate = useNavigate();
+    const [auctions, setAuctions] = useState([])
 
     const fetchData = async () => {
         await axios
