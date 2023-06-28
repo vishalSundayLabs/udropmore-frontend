@@ -39,3 +39,47 @@
     margin: auto auto;
     margin-top: 20px;
 }
+
+.points_container p{
+    font-size: 20px;
+    color: #FFFFFF99;
+    font-weight: 600;
+}
+.points_container button{
+    font-size: 20px;
+    color: #FFFFFF99;
+    font-weight: 700;
+}
+
+@media screen and (max-width:480px) {
+    .price-box p:first-child {
+        font-size: 14px;
+    }
+
+    .price-box p:nth-child(2) {
+        font-size: 14px;
+    }
+
+    .properties-element p {
+        font-size: 12px;
+        font-weight: 300;
+    }
+    .product_img{
+        height: 132%;
+    }
+
+    .play-station {
+        margin-left: 0px;
+    }
+
+    .points_container p{
+        font-size: 14px;
+        color: #FFFFFF99;
+        font-weight: 300;
+    }
+    .points_container button{
+        font-size: 20px;
+        color: #FFFFFF99;
+        font-weight: 700;
+    }
+}

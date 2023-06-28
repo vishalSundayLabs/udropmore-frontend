@@ -59,7 +59,7 @@ const Product = () => {
                 <div className="price-box w-20  h-24 lg:w-40 md:w-40 sm:w-25  ">
                   <p>Market Price</p>
                   <p>₹ {product.marketPrice}</p>
-                </div>
+                </div>Drop Starts
                 <div className="price-box w-40  h-24 lg:w-40 test-base md:w-40 sm:w-25">
                   <p>Drop Starts</p>
                   <p>₹ {auction.dropStartPrice}</p>
