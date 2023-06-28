@@ -12,6 +12,7 @@ const Product = () => {
   const [auction, setAuction] = useState({});
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
+  const auctionId = queryParams.get("auctionid");
   const navigate = useNavigate();
   const fetchData = async () => {
     await axios
@@ -22,7 +23,9 @@ const Product = () => {
       )
       .then((response) => {
         setProduct(response.data.result.product);
-        setAuction(response.data.result.auction);
+        setAuction(
+          response.data.result.auction.filter((item) => item._id == auctionId)[0]
+        );
       })
       .catch((error) => {
         alert(error);
@@ -33,7 +36,7 @@ const Product = () => {
     fetchData();
     return () => {};
   }, []);
-
+  console.log("line 39", auction);
   return (
     <>
       <ProductHeader />
@@ -48,9 +51,9 @@ const Product = () => {
               style={{ color: "black" }}
             >
               <div className="flex w-96 ">
-              <h1 className="text-2xl">
-                    <FlipDate value={auction.startTime} />
-                  </h1>
+                <h1 className="text-2xl">
+                  {/* <FlipDate value={auction.startTime} /> */}
+                </h1>
               </div>
               <div className="flex mb-4 gap-2 align-h">
                 <div className="price-box w-20  h-24 lg:w-40 md:w-40 sm:w-25  ">
@@ -656,7 +659,11 @@ const Product = () => {
                 </div>
 
                 <button
-                  onClick={() => navigate(`/shop/now?product=${product._id}`)}
+                  onClick={() =>
+                    navigate(
+                      `/shop/now?product=${product._id}&auctionId=${auction._id}`
+                    )
+                  }
                   className="shop-now w-96 rounded-lg px-2 py-2 text-white cursor-pointer sm:w-64 md:w-64 sm:text-lg md:text-lg"
                 >
                   Shop Now

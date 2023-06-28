@@ -4,7 +4,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Countdown from "react-countdown";
-import { Carousel } from "@trendyol-js/react-carousel";
+// import { Carousel } from "@trendyol-js/react-carousel";
 import Timer from "../Timer/Timer";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import axios from "axios";
@@ -12,8 +12,27 @@ import { Link, useNavigate } from "react-router-dom";
 import { GrPrevious } from "react-icons/gr";
 import { FlipDate } from "../flipTimer/FlipDate";
 import AuctionPolling from "../AuctionPolling/AuctionPolling";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 
 const Content = () => {
+    const responsive = {
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 4,
+      slidesToSlide: 3 // optional, default to 1.
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 3,
+      slidesToSlide: 2 // optional, default to 1.
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 2,
+      slidesToSlide: 1 // optional, default to 1.
+    }
+  };
   const [auctions, setAuctions] = useState([]);
   const userId = localStorage.getItem("userId");
   const navigate = useNavigate();
@@ -32,7 +51,7 @@ const Content = () => {
   useEffect(() => {
     fetchData();
     return () => {};
-  }, [auctions]);
+  }, []);
 
   const handleParticipate = async (auctionId, userId) => {
     await axios({
@@ -41,32 +60,40 @@ const Content = () => {
     })
       .then((response) => {
         if (response.data.result) {
-          alert(response.data);
-          navigate(`/product?productId=${response.data.result.productId}`);
+          alert(response.data.message);
+          navigate(
+            `/product?productId=${response.data.result.productId}&auctionid=${response.data.result._id}`
+          );
         } else {
           alert(response.data.message);
         }
       })
       .catch((error) => {
-        alert(error);
+        alert(error.message);
       });
   };
 
-  useEffect(() => {
-    setAuctions(auctions);
-  }, [auctions]);
+  // useEffect(() => {
+  //   setAuctions(auctions);
+  // }, [auctions]);
 
   return (
     <div className="product_carousel">
       <Carousel
-        show={4}
-        slide={1}
-        swiping={true}
-        autoSwipe={5000}
-        dynamic={true}
-        useArrowKeys={true}
-        hideArrows={false}
-        // nextArrow={<GrPrevious fontSize="1.5em"  color="white"/>}
+        swipeable={true}
+        draggable={true}
+        responsive={responsive}
+        ssr={true} // means to render carousel on server-side.
+        infinite={true}
+        autoPlay={true}
+        autoPlaySpeed={1000}
+        keyBoardControl={true}
+        customTransition="transform 300ms ease-in-out"
+        transitionDuration={1000}
+        containerClass="carousel-container"
+        removeArrowOnDeviceType={["tablet", "mobile"]}
+        dotListClass="custom-dot-list-style"
+        itemClass="carousel-item-padding-40-px"
       >
         {auctions.map((item, index) => {
           return (
@@ -81,21 +108,6 @@ const Content = () => {
                   <FlipDate value={item.startTime} />
                 )}
               </h1>
-              {/* {item.status == "ACTIVE" ? (
-                <>
-                  <p className="timer-title">Remaining Time</p>
-                  <h1 className="text-2xl">
-                    <FlipDate value={item.endTime} />
-                  </h1>
-                </>
-              ) : (
-                <>
-                  <p className="timer-title">Starts In</p>
-                  <h1 className="text-2xl">
-                    <FlipDate value={item.startTime} />
-                  </h1>
-                </>
-              )} */}
               <img
                 src="/img/WhatsApp Image 2023-06-06 at 15.40 4.svg"
                 width={"100%"}
