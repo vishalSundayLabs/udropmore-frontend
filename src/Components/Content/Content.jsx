@@ -13,7 +13,6 @@ import { GrPrevious } from "react-icons/gr"
 import { FlipDate } from "../flipTimer/FlipDate";
 
 const Content = () => {
-    const [auctions, setAuctions] = useState(["a", "b", "b", 2, 3, 5, 6, 7, 7]);
     const userId = localStorage.getItem("userId");
     const navigate = useNavigate();
 

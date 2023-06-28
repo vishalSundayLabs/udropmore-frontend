@@ -3,13 +3,15 @@ import Header from "./Components/Header/Header";
 import Content from "./Components/Content/Content";
 import Footer from "./Components/Footer/Footer";
 import React, { useRef } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Router, Routes } from "react-router-dom";
 import { Home } from "./Components/Home/Home";
 import Auth from "./Components/Auth/Auth";
 import Product from "./Components/Product/Product";
 import Congratulations from "./Components/Congratulations/Congratulations";
 import PayNow from "./Components/PayNow/PayNow";
 import Product2 from "./Components/Product2/Product2";
+import Congratulations2 from "./Components/Congratulations/Congratulations2";
+import Product3 from "./Components/Product/Product3";
 import TermsNconditions from "./Components/TnC/TermsNconditions";
 import Profile from "./Components/Profile/Profile";
 import Wallet from "./Components/Wallet/Wallet";
@@ -20,12 +22,15 @@ function App() {
       <Route exact path="/" element={<Home />} />
       <Route exact path="/login" element={<Auth />} />
       <Route exact path="/product" element={<Product />} />
+      <Route exact path="/congratulations" element={<Congratulations />} />
+      <Route exact path="/congratulations2" element={<Congratulations2 />} />
       <Route exact path="/profile" element={<Profile />} />
       <Route exact path="/wallet" element={<Wallet />} />
       <Route exact path="/tnc" element={<TermsNconditions/>} />
       <Route exact path="/Congratulations" element={<Congratulations />} />
       <Route exact path="/paynow" element={<PayNow />} />
       <Route exact path="/shop/now" element={<Product2 />} />
+      <Route exact path="/product2" element={<Product3 />} />
     </Routes>
   );
 }
