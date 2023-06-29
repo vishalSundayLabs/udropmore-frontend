@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import navIcon from "../../assets/imgs/navIcon.svg";
 import { Link, NavLink } from "react-router-dom";
+import "./Navbar.scss"
 
 const Navbar = () => {
     const [isAuth, setIsAuth] = useState(false)
@@ -14,12 +15,12 @@ const Navbar = () => {
                     />
                 </Link>
                <div className="flex items-center ">
-                    {!isAuth && <p>
+                    {isAuth && <p>
                         <Link to="/login">Login </Link> /{" "}
                         <Link to={"/signup"}>Sign up</Link>
                     </p>}
-                    {isAuth && <div>
-                        <img src={navIcon} alt="" className="inline" />
+                    {!isAuth && <div>
+                        <img src={navIcon} alt="" className="inline cursor-pointer" />
                         <div className="round-box">
                             <p>0</p>
                         </div>
@@ -56,6 +57,10 @@ const Navbar = () => {
                         </div>
                     </div>}
                </div>
+            </div>
+
+            <div className="navmenu">
+                
             </div>
         </div>
     );
