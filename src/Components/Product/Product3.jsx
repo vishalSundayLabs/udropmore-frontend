@@ -16,7 +16,18 @@ const Product3 = () => {
   const auctionId = queryParams.get("auctionid");
   const userId = localStorage.getItem("userId");
   const [isShow, setIsShow] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [modelMessage,setModelMessage] = useState("")
   const navigate = useNavigate();
+
+  const openModal = () => {
+    console.log("opening");
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+  };
 
   const fetchData = async () => {
     await axios
@@ -41,6 +52,8 @@ const Product3 = () => {
   };
 
   const handleParticipate = (auctionId, userId) => {
+    console.log("participating....");
+    openModal();
     axios({
       method: "put",
       url: `http://localhost:8080/v1/auction/participate/${auctionId}/${userId}`,
@@ -52,7 +65,8 @@ const Product3 = () => {
             `/product4?productId=${response.data.result.productId}&auctionid=${response.data.result._id}`
           );
         } else {
-          alert(response.data.message);
+          // openModal();
+         setModelMessage(response.data.message)
         }
       })
       .catch((error) => {
@@ -64,7 +78,7 @@ const Product3 = () => {
     fetchData();
     return () => {};
   }, []);
-
+  console.log("line 65", auction);
   return (
     <>
       <Navbar />
@@ -152,20 +166,27 @@ const Product3 = () => {
                 </div>
 
                 <button
-                  className="shop-now rounded-lg px-4 py-2 my-5 text-white cursor-pointer  block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                  data-modal-target="defaultModal"
-                  data-modal-toggle="defaultModal"
-                  type="button"
+                  className="shop-now rounded-lg px-4 py-2 my-5 text-white cursor-pointer"
+                  // type="button"
                   style={{
                     width: "300px",
                     fontWeight: "700",
                     fontSize: "20px",
                   }}
-                  onClick={() => handleParticipate(auctionId, userId)}
+                  onClick={()=>setShowModal(true)}
                 >
                   Participate
                 </button>
               </div>
+              {showModal && (
+                <Modal
+                  closeModal={closeModal}
+                  addParticipate={handleParticipate}
+                  auctionid={auction._id}
+                  userId={userId}
+                  message={modelMessage}
+                />
+              )}
             </div>
           </div>
         </div>

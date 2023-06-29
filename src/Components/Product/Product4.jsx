@@ -22,6 +22,11 @@ const Product4 = () => {
   const [showTimer, setShowTimer] = useState();
   const [isShow, setIsShow] = useState(false);
   const [lastOneMins, setLastOneMins] = useState(true);
+  const [lastOneMinsCount, setLastOneMinsCount] = useState(59);
+
+  //   if(localStorage.getItem("changePrice")){
+  //     setDropPrice(localStorage.getItem("changePrice"))
+  //   }
 
   const fetchData = async () => {
     await axios({
@@ -51,36 +56,42 @@ const Product4 = () => {
     fetchData();
     return () => {};
   }, []);
-
+  let count = 60;
   const priceTimer = () => {
     if (auction?.priceDrop?.length > 0) {
       let index = 0;
       const interval = setInterval(async () => {
         for (let i = 0; i < auction.priceDrop.length; i++) {
-          //   const date1 = new Date(auction.priceDrop[i].timeStamp);
-          //   const date2 = new Date();
-          //   var date1Utc = new Date(date1.toISOString());
-          //   var date2Utc = new Date(date2.toISOString());
+          const date1 = new Date(auction.priceDrop[i].timeStamp);
+          const date2 = new Date();
+          var date1Utc = new Date(date1.toISOString());
+          var date2Utc = new Date(date2.toISOString());
           if (
             new Date(auction.priceDrop[i].timeStamp).toUTCString() ==
             new Date().toUTCString()
           ) {
-            index += 1;
             setDropTime(priceIndex + 1);
             setDropPrice(auction.priceDrop[i].newDropPrice);
           }
         }
-        let endTimes = new Date(auction.endTime);
-        let currentTime = new Date();
-        var dateEndUtc = new Date(endTimes.toISOString());
-        var dateCurrentUtc = new Date(currentTime.toISOString());
-        const lastOneMins =
-          new Date(dateEndUtc).getTime() - new Date(dateCurrentUtc).getTime() >
-          3600000
-            ? true
-            : false;
-        console.log("line 80", lastOneMins);
-        setLastOneMins(lastOneMins);
+        // let endTimes = new Date(auction.endTime);
+        // let currentTime = new Date();
+        // var dateEndUtc = new Date(endTimes.toISOString());
+        // var dateCurrentUtc = new Date(currentTime.toISOString());
+        // const lastOneMins =
+        //   new Date(dateEndUtc).getTime() - new Date(dateCurrentUtc).getTime() >
+        //   600000
+        //     ? true
+        //     : false;
+        // if (
+        //   new Date(dateEndUtc).getTime() - new Date(dateCurrentUtc).getTime() >
+        //   60000
+        // ) {
+        //   count -= 1;
+        //   setLastOneMinsCount(count);
+        // }
+        // console.log("line 80", lastOneMins);
+        // setLastOneMins(lastOneMins);
         return interval;
       }, 1000);
     }
@@ -141,7 +152,7 @@ const Product4 = () => {
                     value={dropPrice ? dropPrice : auction.dropStartPrice}
                   />
                 </div>
-                {lastOneMins ? (
+    
                   <div className="flex flex-col w-96 mb-9 justify-center">
                     <p className="timer-title mb-2 text-center">
                       {auction.status == "ACTIVE"
@@ -170,30 +181,31 @@ const Product4 = () => {
                       )}
                     </h1>
                   </div>
-                ) : (
-                  <div className="check flex justify-center mt-5 mb-7">
+                
+                  {/* <div className="check flex justify-center mt-5 mb-7">
                     <img src="/img/checkCircle.svg" alt="" />
                     <div>
                       <p
                         className="text-white "
                         style={{ fontSize: "52px", fontWeight: 500 }}
                       >
-                        20
+                        {lastOneMinsCount}
                       </p>
                     </div>
-                  </div>
-                )}
+                  </div> */}
+                
 
                 <button
                   className="shop-now rounded-lg px-4 py-2 my-5 text-white cursor-pointer"
-                  disabled
+                   disabled ={auction.status=="ACTIVE" ? false : true}
                   style={{
                     width: "300px",
                     fontWeight: "700",
                     fontSize: "20px",
                   }}
+                  onClick={handleOnClickBiding}
                 >
-                  Participate
+                  Shop Now
                 </button>
               </div>
             </div>

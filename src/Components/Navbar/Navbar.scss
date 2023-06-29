@@ -1,0 +1,14 @@
+.navmenu {
+    width: 262px;
+    height: 100vh;
+    z-index: 999;
+    position: fixed;
+    top: 0px;
+    right: 0;
+    background: linear-gradient(0deg, #313131, #313131),
+        linear-gradient(
+            0deg,
+            rgba(255, 255, 255, 0.1),
+            rgba(255, 255, 255, 0.1)
+        );
+}
