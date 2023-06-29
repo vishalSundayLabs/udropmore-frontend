@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import navIcon from "../../assets/imgs/navIcon.svg";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import "./Navbar.scss";
 
 const Navbar = () => {
     const [isAuth, setIsAuth] = useState(false);
     const [openMenu, setOpenMenu] = useState(false);
+
+    const navigate = useNavigate()
 
     return (
         <div>
@@ -31,7 +33,7 @@ const Navbar = () => {
                             <div className="round-box">
                                 <p>0</p>
                             </div>
-                            <div className="outer-box">
+                            <div className="outer-box" onClick={()=> navigate('/orders')}>
                                 <svg
                                     width="17"
                                     style={{ display: "initial" }}
