@@ -18,6 +18,7 @@ import Wallet from "./Components/Wallet/Wallet";
 import Orders from "./Components/Orders/Orders";
 import AddMoney from "./Components/AddMoney/AddMoney";
 import Congrats3 from "./Components/Congratulations/Congrats3";
+import Product4 from "./Components/Product/Product4";
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
       <Route exact path="/paynow" element={<PayNow />} />
       <Route exact path="/shop/now" element={<Product2 />} />
       <Route exact path="/product2" element={<Product3 />} />
+      <Route exact path="/product4" element={<Product4 />} />
     </Routes>
   );
 }

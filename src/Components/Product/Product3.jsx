@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { FlipDate } from "../flipTimer/FlipDate";
 import Footer from "../Footer/Footer";
+import Modal from "../Modal/Modal";
 import Navbar from "../Navbar/Navbar";
 import Timer from "../Timer/Timer";
 import ProductHeader from "./ProductHeader";
@@ -39,8 +40,8 @@ const Product3 = () => {
       });
   };
 
-  const handleParticipate = async (auctionId, userId) => {
-    await axios({
+  const handleParticipate = (auctionId, userId) => {
+    axios({
       method: "put",
       url: `http://localhost:8080/v1/auction/participate/${auctionId}/${userId}`,
     })
@@ -48,7 +49,7 @@ const Product3 = () => {
         if (response.data.result) {
           alert(response.data.message);
           navigate(
-            `/product?productId=${response.data.result.productId}&auctionid=${response.data.result._id}`
+            `/product4?productId=${response.data.result.productId}&auctionid=${response.data.result._id}`
           );
         } else {
           alert(response.data.message);
@@ -63,7 +64,7 @@ const Product3 = () => {
     fetchData();
     return () => {};
   }, []);
-  console.log("line 65", auction);
+
   return (
     <>
       <Navbar />
@@ -151,14 +152,16 @@ const Product3 = () => {
                 </div>
 
                 <button
-                  className="shop-now rounded-lg px-4 py-2 my-5 text-white cursor-pointer"
-                  disabled
+                  className="shop-now rounded-lg px-4 py-2 my-5 text-white cursor-pointer  block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                  data-modal-target="defaultModal"
+                  data-modal-toggle="defaultModal"
+                  type="button"
                   style={{
                     width: "300px",
                     fontWeight: "700",
                     fontSize: "20px",
                   }}
-                  onClick={() => handleParticipate(auction._id, userId)}
+                  onClick={() => handleParticipate(auctionId, userId)}
                 >
                   Participate
                 </button>

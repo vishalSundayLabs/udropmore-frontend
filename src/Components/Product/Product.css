@@ -24,15 +24,24 @@
 }
 
 .shop-now {
-    background: linear-gradient(180deg, #5E6267 0%, #414345 100%),
-        linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.1) 100%);
-
+    background: linear-gradient(180deg, #5e6267 0%, #414345 100%),
+        linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0) 0%,
+            rgba(255, 255, 255, 0.1) 100%
+        );
 }
-
 
 .play-station {
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    margin-left: 40px;
+    margin-bottom: 50px;
+}
+.play-station2 {
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     margin-left: 40px;
     margin-bottom: 50px;
@@ -76,6 +85,15 @@
 } */
 
 .play-station h1 {
+    font-family: Clash Display;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 43px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: rgba(255, 30, 30, 1);
+}
+.play-station2 h1 {
     font-family: Clash Display;
     font-size: 32px;
     font-weight: 700;
@@ -142,3 +160,14 @@
     bottom: 0;
     margin-left: -150px;
 }
+
+.check {
+    position: relative;
+}
+
+.check div {
+    position: absolute;
+    top: 100px;
+    left: 89px;
+}
+

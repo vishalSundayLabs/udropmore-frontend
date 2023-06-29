@@ -57,9 +57,9 @@ const Content = () => {
     navigate(`/product2?productId=${productId}&auctionid=${auctionId}`);
   };
 
-  // useEffect(() => {
-  //   setAuctions(auctions);
-  // }, [auctions]);
+  useEffect(() => {
+    setAuctions(auctions);
+  }, [auctions]);
 
   return (
     <div className="product_carousel">

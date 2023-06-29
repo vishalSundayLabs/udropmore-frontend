@@ -4,7 +4,7 @@ import InputField from "../InputField/InputField";
 import "./Wallet.scss";
 import Navbar from "../Navbar/Navbar";
 import { FlipDate } from "../flipTimer/FlipDate";
-import { FlipMoney } from "../flipTimer/FlipMoney";
+import { FlipMoney } from "../flipTimer/Flip";
 import balance from "../../assets/imgs/balance.svg";
 import addAmt from "../../assets/imgs/addAmt.svg";
 import deductAmt from "../../assets/imgs/deductAmt.svg";
