@@ -16,22 +16,22 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
 const Content = () => {
-    const responsive = {
+  const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
       items: 4,
-      slidesToSlide: 3 // optional, default to 1.
+      slidesToSlide: 3, // optional, default to 1.
     },
     tablet: {
       breakpoint: { max: 1024, min: 464 },
       items: 3,
-      slidesToSlide: 2 // optional, default to 1.
+      slidesToSlide: 2, // optional, default to 1.
     },
     mobile: {
       breakpoint: { max: 464, min: 0 },
       items: 2,
-      slidesToSlide: 1 // optional, default to 1.
-    }
+      slidesToSlide: 1, // optional, default to 1.
+    },
   };
   const [auctions, setAuctions] = useState([]);
   const userId = localStorage.getItem("userId");
@@ -53,24 +53,8 @@ const Content = () => {
     return () => {};
   }, []);
 
-  const handleParticipate = async (auctionId, userId) => {
-    await axios({
-      method: "put",
-      url: `http://localhost:8080/v1/auction/participate/${auctionId}/${userId}`,
-    })
-      .then((response) => {
-        if (response.data.result) {
-          alert(response.data.message);
-          navigate(
-            `/product?productId=${response.data.result.productId}&auctionid=${response.data.result._id}`
-          );
-        } else {
-          alert(response.data.message);
-        }
-      })
-      .catch((error) => {
-        alert(error.message);
-      });
+  const redirect = (productId, auctionId) => {
+    navigate(`/product2?productId=${productId}&auctionid=${auctionId}`);
   };
 
   // useEffect(() => {
@@ -115,7 +99,7 @@ const Content = () => {
               <button
                 className="font-semibold"
                 style={{ fontSize: "14px" }}
-                onClick={() => handleParticipate(item._id, userId)}
+                onClick={() => redirect(item.productId, item._id)}
               >
                 Participate
               </button>
