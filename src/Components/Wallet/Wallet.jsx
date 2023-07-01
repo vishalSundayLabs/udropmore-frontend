@@ -4,7 +4,7 @@ import InputField from "../InputField/InputField";
 import "./Wallet.scss";
 import Navbar from "../Navbar/Navbar";
 import { FlipDate } from "../flipTimer/FlipDate";
-import { FlipMoney } from "../flipTimer/FlipMoney";
+import { FlipMoney } from "../flipTimer/Flip";
 import balance from "../../assets/imgs/balance.svg";
 import addAmt from "../../assets/imgs/addAmt.svg";
 import deductAmt from "../../assets/imgs/deductAmt.svg";
@@ -22,7 +22,7 @@ const Wallet = () => {
 const [balance,setBalance] = useState({})
   const fetchData = () => {
     axios({
-      url: `http://localhost:8080/v1/transaction/list/user/${userId}?page=${0}&limit=${4}`,
+      url: `https://dropmore-api.onrender.com/v1/transaction/list/user/${userId}?page=${0}&limit=${4}`,
       method: "get",
     })
       .then((response) => {
@@ -34,7 +34,7 @@ const [balance,setBalance] = useState({})
       });
 
       axios({
-        url: `http://localhost:8080/v1/users/wallet/balance/${userId}`,
+        url: `https://dropmore-api.onrender.com/v1/users/wallet/balance/${userId}`,
         method: "get",
       })
         .then((response) => {

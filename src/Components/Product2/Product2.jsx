@@ -20,7 +20,7 @@ const Product2 = () => {
   const [showTimer, setShowTimer] = useState();
   const fetchData = async () => {
     await axios({
-      url: `http://localhost:8080/v1/product/get/by/id/${queryParams.get(
+      url: `https://dropmore-api.onrender.com/v1/product/get/by/id/${queryParams.get(
         "product"
       )}`,
       method: "get",
@@ -77,7 +77,7 @@ const Product2 = () => {
   const handleOnClickBiding = () => {
     console.log("line 85", dropPrice);
     axios({
-      url: `http://localhost:8080/v1/auction/bid/${auctionId}/${userId}`,
+      url: `https://dropmore-api.onrender.com/v1/auction/bid/${auctionId}/${userId}`,
       method: "put",
       data: { bidAmount: dropPrice ? dropPrice : auction.dropStartPrice },
     })

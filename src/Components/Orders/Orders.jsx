@@ -16,7 +16,7 @@ const Orders = () => {
   const [orders, setOrders] = useState([]);
   const fetchData = () => {
     axios({
-      url: `http://localhost:8080/v1/order/history/${userId}?page=${0}&limit=${4}`,
+      url: `https://dropmore-api.onrender.com/v1/order/history/${userId}?page=${0}&limit=${4}`,
       method: "get",
     })
       .then((response) => {

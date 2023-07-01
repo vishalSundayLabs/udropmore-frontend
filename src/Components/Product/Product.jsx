@@ -17,7 +17,7 @@ const Product = () => {
   const fetchData = async () => {
     await axios
       .get(
-        `http://localhost:8080/v1/product/get/by/id/${queryParams.get(
+        `https://dropmore-api.onrender.com/v1/product/get/by/id/${queryParams.get(
           "productId"
         )}`
       )
