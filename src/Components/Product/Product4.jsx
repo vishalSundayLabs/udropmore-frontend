@@ -118,7 +118,7 @@ const Product4 = () => {
         console.log(error);
       });
   };
-
+  
   return (
     <>
       <Navbar />
