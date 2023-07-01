@@ -1,16 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap");
 
-
 .orders_wrapper {
     font-family: "Roboto", sans-serif;
-    margin-top: 3rem;
+    margin-top: 4rem;
 
     .orders_container {
         border-radius: 7px;
         padding: 0px 12px;
         background-color: transparent;
-       
-
 
         .transactions {
             width: 85%;
@@ -62,7 +59,7 @@
 
 @media only screen and (max-width: 700px) {
     .orders_wrapper {
-        margin-top: 20px !important;
+        // margin-top: 50px !important;
 
         .orders_container {
             width: 94% !important;

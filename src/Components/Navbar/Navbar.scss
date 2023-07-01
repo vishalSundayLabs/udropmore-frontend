@@ -48,3 +48,15 @@
 .open_nav {
     right: 0px;
 }
+
+
+@media only screen and (max-width: 700px) {
+    .navmenu{
+        width: 100vw;
+        background: black;
+    }
+
+    .close_nav{
+        right: -700px;
+    }
+}

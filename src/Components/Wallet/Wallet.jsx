@@ -67,7 +67,7 @@ const [balance,setBalance] = useState({})
             <p style={{color:"white",letterSpacing:"2px", fontSize:"35px"}}>₹{balance.walletBalance}</p>
             </div>
 
-            <div className="add_money profile_submit mt-6">
+            <div className="add_money mt-6">
               <button type="submit">Add Money</button>
             </div>
           </div>
@@ -117,8 +117,9 @@ const [balance,setBalance] = useState({})
             </div>
           </div>
         </div>
+      </div>
 
-        <div className="mt-5">
+      <div className="mt-5 text-center">
           <PaginatedItems
             itemsPerPage={itemsPerPage}
             setitemsPerPage={setitemsPerPage}
@@ -128,7 +129,6 @@ const [balance,setBalance] = useState({})
             setTotalPages={setTotalPages}
           />
         </div>
-      </div>
       {/* <Footer /> */}
     </div>
   );
