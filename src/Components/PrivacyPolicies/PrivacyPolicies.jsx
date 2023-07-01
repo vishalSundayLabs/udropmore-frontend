@@ -1,14 +1,14 @@
-import React from 'react'
-import Navbar from '../Navbar/Navbar'
+import React from "react";
+import Navbar from "../Navbar/Navbar";
 
-const About = () => {
-  return (
-    <>
-    <Navbar/>
-        <div className="about_container mt-24">
+const PrivacyPolicies = () => {
+    return (
+        <>
+        <Navbar/>
+            <div className="about_container mt-24">
                 <div className="tnc_head">
                     <h1 className="text-white text-center my-6 text-3xl">
-                        ABOUT US
+                        PRIVACY POLICIES
                     </h1>
                 </div>
     
@@ -671,22 +671,24 @@ const About = () => {
                     <div>
                         <div className="mb-2">
                             <span className="font-bold ">
-                                5.	ONLINE BIDDING EVENT, PRICE-DROP TIMER, AND THE LOYALTY LEVELS ON THE PLATFORM
+                                5. ONLINE BIDDING EVENT, PRICE-DROP TIMER, AND THE
+                                LOYALTY LEVELS ON THE PLATFORM
                             </span>
                         </div>
                         <div className="mb-2">
                             <span className="font-bold">5.1 </span>
                             <span className="font-light">
-                            Price-Drop Auction is the online auction/ E-Auction organized by the Company on the Platform, where products may be offered to the Bidders at a price less than the maximum retail price. 
+                                Price-Drop Auction is the online auction/ E-Auction
+                                organized by the Company on the Platform, where
+                                products may be offered to the Bidders at a price
+                                less than the maximum retail price.
                             </span>
                         </div>
-                        
-                       
                     </div>
                 </div>
             </div>
-    </>
-  )
-}
+        </>
+    );
+};
 
-export default About
+export default PrivacyPolicies;

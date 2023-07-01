@@ -20,6 +20,7 @@ import AddMoney from "./Components/AddMoney/AddMoney";
 import Congrats3 from "./Components/Congratulations/Congrats3";
 import Product4 from "./Components/Product/Product4";
 import About from "./Components/About/About";
+import PrivacyPolicies from "./Components/PrivacyPolicies/PrivacyPolicies";
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
       <Route exact path="/product2" element={<Product3 />} />
       <Route exact path="/product4" element={<Product4 />} />
       <Route exact path="/about" element={<About />} />
+      <Route exact path="/policies" element={<PrivacyPolicies />} />
     </Routes>
   );
 }

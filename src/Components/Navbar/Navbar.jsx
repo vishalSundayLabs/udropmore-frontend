@@ -115,7 +115,7 @@ const Navbar = () => {
                         About Us <img src="/img/navRight.svg" alt="" />
                     </Link>
                     <Link
-                        to={"/about"}
+                        to={"/policies"}
                         className="flex items-center justify-center"
                     >
                         Privacy Policy <img src="/img/navRight.svg" alt="" />
