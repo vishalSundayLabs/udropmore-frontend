@@ -30,7 +30,7 @@ const Product4 = () => {
 
   const fetchData = async () => {
     await axios({
-      url: `http://localhost:8080/v1/product/get/by/id/${queryParams.get(
+      url: `https://dropmore-api.onrender.com/v1/product/get/by/id/${queryParams.get(
         "productId"
       )}`,
       method: "get",
@@ -105,7 +105,7 @@ const Product4 = () => {
   const handleOnClickBiding = () => {
     console.log("line 85", dropPrice);
     axios({
-      url: `http://localhost:8080/v1/auction/bid/${auctionId}/${userId}`,
+      url: `https://dropmore-api.onrender.com/v1/auction/bid/${auctionId}/${userId}`,
       method: "put",
       data: { bidAmount: dropPrice ? dropPrice : auction.dropStartPrice },
     })
@@ -125,7 +125,7 @@ const Product4 = () => {
       <div className="container mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 sm:grid-cols-1 gap-6">
           <div className="flex justify-center text-3xl rounded-xl my-32 md:mt32">
-            <img src="/img/product.png" className="product_img" />
+            <img src="/img/1.jpeg" className="product_img" />
           </div>
           <div className="flex justify-center text-3xl my-32 md:mb-32">
             <div

@@ -32,7 +32,7 @@ const Product3 = () => {
   const fetchData = async () => {
     await axios
       .get(
-        `http://localhost:8080/v1/product/get/by/id/${queryParams.get(
+        `https://dropmore-api.onrender.com/v1/product/get/by/id/${queryParams.get(
           "productId"
         )}`
       )
@@ -56,7 +56,7 @@ const Product3 = () => {
     openModal();
     axios({
       method: "put",
-      url: `http://localhost:8080/v1/auction/participate/${auctionId}/${userId}`,
+      url: `https://dropmore-api.onrender.com/v1/auction/participate/${auctionId}/${userId}`,
     })
       .then((response) => {
         if (response.data.result) {
@@ -85,7 +85,7 @@ const Product3 = () => {
       <div className="container mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 sm:grid-cols-1 gap-6">
           <div className="flex justify-center text-3xl rounded-xl my-32 md:mt32">
-            <img src="/img/product.png" className="product_img" />
+            <img src="/img/1.jpeg" className="product_img" />
           </div>
           <div className="flex justify-center text-3xl my-32 md:mb-32">
             <div
@@ -184,6 +184,7 @@ const Product3 = () => {
                   addParticipate={handleParticipate}
                   auctionid={auction._id}
                   userId={userId}
+                  product={product._id}
                   message={modelMessage}
                 />
               )}

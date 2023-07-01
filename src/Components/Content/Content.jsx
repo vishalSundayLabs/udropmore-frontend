@@ -39,7 +39,7 @@ const Content = () => {
 
   const fetchData = async () => {
     await axios
-      .get("http://localhost:8080/v1/auction/upcomming")
+      .get("https://dropmore-api.onrender.com/v1/auction/upcomming")
       .then((response) => {
         setAuctions(response.data.result);
       })
@@ -93,7 +93,7 @@ const Content = () => {
                 )}
               </h1>
               <img
-                src="/img/WhatsApp Image 2023-06-06 at 15.40 4.svg"
+                src="/img/1.jpeg"
                 width={"100%"}
               />
               <button
@@ -108,7 +108,7 @@ const Content = () => {
         })}
       </Carousel>
       <AuctionPolling
-        url={"http://localhost:8080/v1/auction/polling"}
+        url={"https://dropmore-api.onrender.com/v1/auction/polling"}
         interval={1000}
         retryCount={3}
         states={auctions}

@@ -31,12 +31,12 @@ const Auth = () => {
         e.preventDefault();
         await axios({
             method: "post",
-            url: `http://localhost:8080/v1/auth/sendotp`,
+            url: `https://dropmore-api.onrender.com/v1/auth/sendotp`,
             data: { phoneNumber: phoneNumber },
         })
             .then((response) => {
                 console.log(response);
-                alert(response.data);
+                // alert(response.data.message);
                 setShowPage(false);
             })
             .catch((error) => {
@@ -51,7 +51,7 @@ const Auth = () => {
         console.log(otp.otp1 + otp.otp2 + otp.otp3 + otp.otp4);
         await axios({
             method: "post",
-            url: `http://localhost:8080/v1/auth/verifyOtp`,
+            url: `https://dropmore-api.onrender.com/v1/auth/verifyOtp`,
             data: {
                 phoneNumber: phoneNumber,
                 otp: Number(otp.otp1 + otp.otp2 + otp.otp3 + otp.otp4),

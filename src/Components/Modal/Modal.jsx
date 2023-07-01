@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import "./Modal.scss";
 
 const Modal = (props) => {
@@ -7,7 +8,7 @@ const Modal = (props) => {
       props.closeModal();
     }
   };
-
+const navigate = useNavigate()
   return (
     <div className="modal-overlay" onClick={handleOverlayClick}>
       <div className="modal-content">
@@ -40,7 +41,10 @@ const Modal = (props) => {
           <button
             onClick={() => {
               props.closeModal();
-              props.addParticipate(props.auctionid, props.userId);
+            //   props.addParticipate(props.auctionid, props.userId);
+              navigate(
+                `/product4?productId=${props.product}&auctionid=${props.auctionid}`
+              );
             }}
           >
             Join Now
