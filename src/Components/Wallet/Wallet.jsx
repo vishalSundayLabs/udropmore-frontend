@@ -22,7 +22,7 @@ const Wallet = () => {
 const [balance,setBalance] = useState({})
   const fetchData = () => {
     axios({
-      url: `https://dropmore-api.onrender.com/v1/transaction/list/user/${userId}?page=${0}&limit=${4}`,
+      url: `http://localhost:8080/v1/transaction/list/user/${userId}?page=${0}&limit=${4}`,
       method: "get",
     })
       .then((response) => {
@@ -34,7 +34,7 @@ const [balance,setBalance] = useState({})
       });
 
       axios({
-        url: `https://dropmore-api.onrender.com/v1/users/wallet/balance/${userId}`,
+        url: `http://localhost:8080/v1/users/wallet/balance/${userId}`,
         method: "get",
       })
         .then((response) => {

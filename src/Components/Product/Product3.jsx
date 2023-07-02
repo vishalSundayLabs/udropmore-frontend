@@ -32,7 +32,7 @@ const Product3 = () => {
   const fetchData = async () => {
     await axios
       .get(
-        `https://dropmore-api.onrender.com/v1/product/get/by/id/${queryParams.get(
+        `http://localhost:8080/v1/product/get/by/id/${queryParams.get(
           "productId"
         )}`
       )
@@ -56,7 +56,7 @@ const Product3 = () => {
     openModal();
     axios({
       method: "put",
-      url: `https://dropmore-api.onrender.com/v1/auction/participate/${auctionId}/${userId}`,
+      url: `http://localhost:8080/v1/auction/participate/${auctionId}/${userId}`,
     })
       .then((response) => {
         if (response.data.result) {
@@ -105,6 +105,7 @@ const Product3 = () => {
                         height={50}
                         fontSize={35}
                       />
+                      
                     ) : (
                       <FlipDate
                         value={auction.startTime}
@@ -116,6 +117,7 @@ const Product3 = () => {
                   ) : (
                     ""
                   )}
+                  
                 </h1>
               </div>
               <div className="flex w-full justify-around mb-4  align-h">

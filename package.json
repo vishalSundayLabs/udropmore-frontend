@@ -23,6 +23,7 @@
     "react-dom": "^18.2.0",
     "react-icons": "^4.10.1",
     "react-multi-carousel": "^2.8.4",
+    "react-odometerjs": "^3.1.0",
     "react-paginate": "^8.2.0",
     "react-polling": "^1.0.9",
     "react-responsive-carousel": "^3.2.23",
@@ -31,6 +32,7 @@
     "react-slick": "^0.29.0",
     "react-use-intercom": "^5.1.4",
     "slick-carousel": "^1.8.1",
+    "tm-odometer": "^1.0.6",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

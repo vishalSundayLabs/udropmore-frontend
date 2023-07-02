@@ -7,6 +7,7 @@ import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
 import Timer from "../Timer/Timer";
 import ProductHeader from "./ProductHeader";
+import Odometer from 'react-odometerjs';
 
 const Product4 = () => {
   const location = useLocation();
@@ -30,7 +31,7 @@ const Product4 = () => {
 
   const fetchData = async () => {
     await axios({
-      url: `https://dropmore-api.onrender.com/v1/product/get/by/id/${queryParams.get(
+      url: `http://localhost:8080/v1/product/get/by/id/${queryParams.get(
         "productId"
       )}`,
       method: "get",
@@ -105,7 +106,7 @@ const Product4 = () => {
   const handleOnClickBiding = () => {
     console.log("line 85", dropPrice);
     axios({
-      url: `https://dropmore-api.onrender.com/v1/auction/bid/${auctionId}/${userId}`,
+      url: `http://localhost:8080/v1/auction/bid/${auctionId}/${userId}`,
       method: "put",
       data: { bidAmount: dropPrice ? dropPrice : auction.dropStartPrice },
     })
@@ -148,9 +149,12 @@ const Product4 = () => {
                   </p>
                 </div>
                 <div className="flex flex-col w-full mb-9 justify-center">
-                  <Flip
-                    value={dropPrice ? dropPrice : auction.dropStartPrice}
-                  />
+                {/* <Flip
+                    value={dropP
+                        rice ? dropPrice : auction.dropStartPrice}
+                  /> */}
+                  <div></div>
+                   <Odometer value={dropPrice ? dropPrice : auction.dropStartPrice} style={{ cursor: 'pointer' ,display:'flex',flexDirection:"row",justifyContent:"center",background:"#111111",fontSize:"52px"}} duration={0.7} format="(,ddd).dd" />
                 </div>
     
                   <div className="flex flex-col w-96 mb-9 justify-center">

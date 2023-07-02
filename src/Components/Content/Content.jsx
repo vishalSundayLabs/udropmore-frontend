@@ -15,6 +15,7 @@ import AuctionPolling from "../AuctionPolling/AuctionPolling";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
+
 const Content = () => {
   const responsive = {
     desktop: {
@@ -35,11 +36,12 @@ const Content = () => {
   };
   const [auctions, setAuctions] = useState([]);
   const userId = localStorage.getItem("userId");
+  const [millisecond,setMiliseconds] = useState(1000)
   const navigate = useNavigate();
 
   const fetchData = async () => {
     await axios
-      .get("https://dropmore-api.onrender.com/v1/auction/upcomming")
+      .get("http://localhost:8080/v1/auction/upcomming")
       .then((response) => {
         setAuctions(response.data.result);
       })
@@ -61,6 +63,10 @@ const Content = () => {
     setAuctions(auctions);
   }, [auctions]);
 
+  setInterval(()=>{
+    setMiliseconds(millisecond - 1)
+  },1)
+
   return (
     <div className="product_carousel">
       <Carousel
@@ -70,7 +76,7 @@ const Content = () => {
         ssr={true} // means to render carousel on server-side.
         infinite={true}
         autoPlay={true}
-        autoPlaySpeed={1000}
+        autoPlaySpeed={5000}
         keyBoardControl={true}
         customTransition="transform 300ms ease-in-out"
         transitionDuration={1000}
@@ -87,7 +93,9 @@ const Content = () => {
               </p>
               <h1 className="text-2xl">
                 {item.status == "ACTIVE" ? (
+                  <>
                   <FlipDate value={item.endTime} />
+                  </>
                 ) : (
                   <FlipDate value={item.startTime} />
                 )}
@@ -108,7 +116,7 @@ const Content = () => {
         })}
       </Carousel>
       <AuctionPolling
-        url={"https://dropmore-api.onrender.com/v1/auction/polling"}
+        url={"http://localhost:8080/v1/auction/polling"}
         interval={1000}
         retryCount={3}
         states={auctions}

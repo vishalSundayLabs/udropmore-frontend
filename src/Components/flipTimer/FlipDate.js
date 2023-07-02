@@ -10,7 +10,7 @@ export const FlipDate = (props) => {
   return (
     <FlipClockCountdown
       to={new Date(props.value)}
-      labels={["Days", "Hrs", "Mins", "Secs"]}
+      labels={["Days", "Hrs", "Mins", "Secs","Milis"]}
       labelStyle={{ fontSize: 8, fontWeight: 300 }}
       digitBlockStyle={{
         width: props.width ? props.width : 10,
@@ -19,7 +19,7 @@ export const FlipDate = (props) => {
       }}
       dividerStyle={{ color: "grey", height: 1 }}
       separatorStyle={{ color: "white", size: "2px" }}
-      renderMap={[true, true, true, true]}
+      renderMap={[true, true, true, true,true]}
     ></FlipClockCountdown>
   );
 };
