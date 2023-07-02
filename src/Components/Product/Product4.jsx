@@ -7,6 +7,7 @@ import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
 import Timer from "../Timer/Timer";
 import ProductHeader from "./ProductHeader";
+import "./Product.css"
 
 const Product4 = () => {
   const location = useLocation();
@@ -124,7 +125,7 @@ const Product4 = () => {
       <Navbar />
       <div className="container mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 sm:grid-cols-1 gap-6">
-          <div className="flex justify-center text-3xl rounded-xl my-32 md:mt32">
+          <div className="flex justify-center text-3xl rounded-xl my-32 md:mt32 product_img_container">
             <img src="/img/1.jpeg" className="product_img" />
           </div>
           <div className="flex justify-center text-3xl my-32 md:mb-32">

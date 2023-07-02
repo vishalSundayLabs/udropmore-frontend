@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Auth.css";
 import axios from "axios";
 
@@ -75,11 +75,12 @@ const Auth = () => {
         <div>
             <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
                 <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+                <Link to={"/"}>
                     <img
                         className="mx-auto h-10 w-auto"
                         src="/img/Drop More Final Logo.svg"
                         alt="Your Company"
-                    />
+                    /></Link>
                     <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray extra-class">
                         Start exploring Drops now
                     </h2>

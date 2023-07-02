@@ -7,6 +7,7 @@ import Modal from "../Modal/Modal";
 import Navbar from "../Navbar/Navbar";
 import Timer from "../Timer/Timer";
 import ProductHeader from "./ProductHeader";
+import "./Product.css"
 
 const Product3 = () => {
   const [product, setProduct] = useState({});
@@ -84,8 +85,8 @@ const Product3 = () => {
       <Navbar />
       <div className="container mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 sm:grid-cols-1 gap-6">
-          <div className="flex justify-center text-3xl rounded-xl my-32 md:mt32">
-            <img src="/img/1.jpeg" className="product_img" />
+          <div className="flex justify-center text-3xl rounded-xl my-32 product_img_container ">
+            <img src="/img/1.jpeg" className="product_img"/>
           </div>
           <div className="flex justify-center text-3xl my-32 md:mb-32">
             <div
@@ -142,7 +143,7 @@ const Product3 = () => {
 
                 <div className="product_points">
                   <div className="points_container">
-                    <div className="flex mb-6 gap-7">
+                    <div className="flex mb-6 points_gap">
                       <div className="point flex gap-2">
                         <img src="/img/productPoint.svg" alt="" />
                         <p className="text-white">Dual Shock Sensor</p>
@@ -152,7 +153,7 @@ const Product3 = () => {
                         <p className="text-white">3D audio</p>
                       </div>
                     </div>
-                    <div className="flex gap-7 mb-8">
+                    <div className="flex mb-8 points_gap">
                       <div className="point flex gap-2">
                         <img src="/img/productPoint.svg" alt="" />
                         <p className="text-white">VR Set Compatible</p>

@@ -10,7 +10,7 @@ const PayNow = () => {
       <ProductHeader />
       <div className="container mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 sm:grid-cols-1 gap-6">
-          <div className="flex justify-center text-3xl rounded-xl my-32 md:mt32">
+          <div className="flex justify-center text-3xl rounded-xl my-32 md:mt32 product_img_container ">
             <img src="/img/Saly-35.png" />
           </div>
           <div className="flex justify-center text-3xl my-32 md:mb-32 min-[200]:my-0">

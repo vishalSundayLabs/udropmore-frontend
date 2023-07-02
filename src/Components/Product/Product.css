@@ -171,3 +171,8 @@
     left: 89px;
 }
 
+@media screen and (max-width: 480px) {
+    /* .product_img {
+        margin-bottom: 0px !important;
+    } */
+}

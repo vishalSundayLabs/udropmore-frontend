@@ -26,7 +26,7 @@ function App() {
     <Routes>
       <Route exact path="/" element={<Home />} />
       <Route exact path="/login" element={<Auth />} />
-      <Route exact path="/product" element={<Product />} />
+      {/* <Route exact path="/product" element={<Product />} /> */}
       <Route exact path="/orders" element={<Orders />} />
       <Route exact path="/addmoney" element={<AddMoney />} />
       <Route exact path="/congratulations" element={<Congrats3 />} />

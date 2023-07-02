@@ -31,3 +31,18 @@ svg {
 .fs-42{
     font-size: 42px;
 }
+
+.points_gap{
+    gap: 6rem;
+}
+
+.product_img_container img {
+    width: 600px;
+    height: 650px;
+}
+
+@media screen and (max-width: 600px) {
+    .product_img_container {
+        margin-bottom: 0px !important;
+    }
+}
