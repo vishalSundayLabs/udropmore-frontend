@@ -1,5 +1,19 @@
+.mob_hide{
+    overflow: hidden;
+    // z-index: -1;
+}
+
+.mobile_container{
+    display: none;
+}
+
+.congrats_bg2{
+    display: none;
+}
+
 .congrats_wrapper {
-    height: 98vh;
+    // height: 98vh;
+    min-height: 600px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -27,11 +41,39 @@
                 );
             color: white;
             font-weight: 700;
-            padding: 11px 62px 11px 65px;
+            // padding: 11px 62px 11px 65px;
             border-radius: 8px;
             border: 1px;
             gap: 5px;
             font-size: 20px;
+            width: 300px;
         }
+    }
+}
+
+
+@media only screen and (max-width: 800px) {
+
+    .congrats_bg2{
+        display: block;
+    }
+
+    .congrats_wrapper{
+        align-items: unset;
+    }
+
+    .congrats_container{
+        margin-top: 20px !important;
+    }
+    .mob_hide{
+        display: none;
+    }
+
+    .congrats_wrapper {
+        min-height: 520px;
+    }
+
+    .mobile_container{
+        display: block;
     }
 }

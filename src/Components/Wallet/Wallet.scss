@@ -4,7 +4,7 @@
 .wallet_wrapper {
     // font-family: "Clash Display", sans-serif !important;
     font-family: "Roboto", sans-serif;
-    margin-top: 3rem;
+    margin-top: 4rem;
 
     .wallet_container {
         border-radius: 7px;
@@ -74,12 +74,31 @@
                 }
             }
         }
+        .add_money {
+            text-align: center;
+            button {
+                background: linear-gradient(180deg, #5e6267 0%, #414345 100%),
+                    linear-gradient(
+                        180deg,
+                        rgba(255, 255, 255, 0) 0%,
+                        rgba(255, 255, 255, 0.1) 100%
+                    );
+                color: white;
+                font-weight: 700;
+                // padding: 11px 62px 11px 65px;
+                border-radius: 8px;
+                border: 1px;
+                gap: 5px;
+                font-size: 20px;
+                width: 300px;
+            }
+        }
     }
 }
 
 @media only screen and (max-width: 700px) {
     .wallet_wrapper {
-        margin-top: 15px !important;
+        margin-top: 48px !important;
         .wallet_container {
             width: 94% !important;
             border-radius: 7px;

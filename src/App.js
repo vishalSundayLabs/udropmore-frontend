@@ -7,10 +7,8 @@ import { Route, Router, Routes } from "react-router-dom";
 import { Home } from "./Components/Home/Home";
 import Auth from "./Components/Auth/Auth";
 import Product from "./Components/Product/Product";
-import Congratulations from "./Components/Congratulations/Congratulations";
 import PayNow from "./Components/PayNow/PayNow";
 import Product2 from "./Components/Product2/Product2";
-import Congratulations2 from "./Components/Congratulations/Congratulations2";
 import Product3 from "./Components/Product/Product3";
 import TermsNconditions from "./Components/TnC/TermsNconditions";
 import Profile from "./Components/Profile/Profile";
@@ -21,6 +19,7 @@ import Congrats3 from "./Components/Congratulations/Congrats3";
 import Product4 from "./Components/Product/Product4";
 import About from "./Components/About/About";
 import PrivacyPolicies from "./Components/PrivacyPolicies/PrivacyPolicies";
+import Congratulations from "./Components/Congratulations/Congratulations"
 
 function App() {
   return (
@@ -31,6 +30,7 @@ function App() {
       <Route exact path="/orders" element={<Orders />} />
       <Route exact path="/addmoney" element={<AddMoney />} />
       <Route exact path="/congratulations" element={<Congrats3 />} />
+      <Route exact path="/congratulations2" element={<Congratulations/>} />
       <Route exact path="/profile" element={<Profile />} />
       <Route exact path="/wallet" element={<Wallet />} />
       <Route exact path="/tnc" element={<TermsNconditions/>} />
