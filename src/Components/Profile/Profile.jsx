@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import "./Profile.scss";
-import Footer from "../Footer/Footer";
 import profileImg from "../../assets/imgs/profile.svg";
 import Navbar from "../Navbar/Navbar";
 import InputField from "../InputField/InputField";
 import useInputChange from "../../hooks/useInputChange";
+import Footer from "../Footer/Footer";
 
 const Profile = () => {
 
@@ -79,6 +79,8 @@ const Profile = () => {
                     </div>
                 </div>
             </div>
+
+            <Footer/>
         </div>
     );
 };

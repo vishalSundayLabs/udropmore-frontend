@@ -7,6 +7,7 @@ import PaginatedItems from "../Pagination/Pagination";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import moment from "moment";
+import Footer from "../Footer/Footer";
 
 const Orders = () => {
     const [currentPage, setCurrentPage] = useState(1);
@@ -139,7 +140,7 @@ const Orders = () => {
                 </div>
             </div>
 
-            <div className="mt-5 text-center">
+            <div className="mt-8 text-center mb-6">
                 <PaginatedItems
                     itemsPerPage={itemsPerPage}
                     setitemsPerPage={setitemsPerPage}
@@ -149,6 +150,8 @@ const Orders = () => {
                     setTotalPages={setTotalPages}
                 />
             </div>
+
+            <Footer/>
         </div>
     );
 };

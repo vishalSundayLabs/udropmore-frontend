@@ -4,16 +4,60 @@
         padding: 0px 12px;
         background-color: transparent;
 
-        input{
+        input {
             border: none;
             background: transparent;
-            border-bottom: 1px solid #FFFFFF;
+            border-bottom: 1px solid #ffffff;
 
-            &:focus{
+            &:focus {
                 outline: none !important;
             }
         }
-            
+
+        .amount_btn {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 25px;
+
+            button {
+                background-color: transparent;
+                color: #a9a9a9;
+                border: 0.6px solid #ffffff33;
+                width: 75px;
+                height: 32px;
+                border-radius: 8px;
+            }
+
+            .selected_amt {
+                background: linear-gradient(180deg, #5e6267 0%, #414345 100%),
+                    linear-gradient(
+                        180deg,
+                        rgba(255, 255, 255, 0) 0%,
+                        rgba(255, 255, 255, 0.1) 100%
+                    );
+            }
+        }
+
+        .add_money {
+            text-align: center;
+            button {
+                background: linear-gradient(180deg, #5e6267 0%, #414345 100%),
+                    linear-gradient(
+                        180deg,
+                        rgba(255, 255, 255, 0) 0%,
+                        rgba(255, 255, 255, 0.1) 100%
+                    );
+                color: white;
+                font-weight: 700;
+                // padding: 11px 62px 11px 65px;
+                border-radius: 8px;
+                border: 1px;
+                gap: 5px;
+                font-size: 20px;
+                width: 300px;
+            }
+        }
     }
 }
 

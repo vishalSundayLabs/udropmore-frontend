@@ -145,7 +145,7 @@ const Wallet = () => {
                 </div>
             </div>
 
-            <div className="mt-5 text-center">
+            <div className="mt-8 text-center mb-6">
                 <PaginatedItems
                     itemsPerPage={itemsPerPage}
                     setitemsPerPage={setitemsPerPage}
@@ -155,7 +155,7 @@ const Wallet = () => {
                     setTotalPages={setTotalPages}
                 />
             </div>
-            {/* <Footer /> */}
+            <Footer />
         </div>
     );
 };
