@@ -52,7 +52,7 @@ svg {
         margin-bottom: 0px !important;
     }
     .product_img_container img{
-        height: 450px !important;
+        height: 360px !important;
         object-fit: fill !important;
     }
 }
@@ -61,7 +61,7 @@ svg {
 @media screen and (max-width: 480px) {
 
     .points_gap{
-        gap: 3rem;
+        gap: 4.5rem;
     }
     
 }
