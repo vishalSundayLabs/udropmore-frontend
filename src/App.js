@@ -8,7 +8,6 @@ import { Home } from "./Components/Home/Home";
 import Auth from "./Components/Auth/Auth";
 import Product from "./Components/Product/Product";
 import PayNow from "./Components/PayNow/PayNow";
-import Product2 from "./Components/Product2/Product2";
 import Product3 from "./Components/Product/Product3";
 import TermsNconditions from "./Components/TnC/TermsNconditions";
 import Profile from "./Components/Profile/Profile";
@@ -21,6 +20,7 @@ import About from "./Components/About/About";
 import PrivacyPolicies from "./Components/PrivacyPolicies/PrivacyPolicies";
 import Congratulations from "./Components/Congratulations/Congratulations"
 import Tnc from "./Components/TnC/Tnc";
+import ShopNow from "./Components/Product2/ShopNow";
 
 function App() {
   return (
@@ -37,7 +37,7 @@ function App() {
       {/* <Route exact path="/tnc1" element={<TermsNconditions/>} /> */}
       <Route exact path="/tnc" element={<Tnc/>} />
       <Route exact path="/paynow" element={<PayNow />} />
-      <Route exact path="/shop/now" element={<Product2 />} />
+      <Route exact path="/shop/now" element={<ShopNow />} />
       <Route exact path="/product2" element={<Product3 />} />
       <Route exact path="/product4" element={<Product4 />} />
       <Route exact path="/about" element={<About />} />

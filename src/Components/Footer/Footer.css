@@ -1,8 +1,12 @@
-.footer {
+.footer_container{
     background-color: #1c1c1c;
-    display: flex;
     padding: 2rem 4rem;
+}
+
+.footer {
+    display: flex;
     justify-content: space-between;
+    /* gap: 100px; */
 }
 
 .footer-click {
@@ -62,12 +66,18 @@
     display: none;
 }
 
+@media screen and (max-width:820px) {
+    .footer{
+        padding: 1rem 0px;
+    }
+}
 
 @media screen and (max-width:800px) {
     .footer {
         flex-direction: column;
         gap: 0.4rem;
         overflow: hidden;
+        padding: 2rem 4rem;
         /* width: 100%; */
     }
 
