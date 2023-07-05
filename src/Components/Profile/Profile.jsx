@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import "./Profile.scss";
 import Footer from "../Footer/Footer";
-import profileImg from "../../assets/imgs/profile.svg";
 import Navbar from "../Navbar/Navbar";
 import InputField from "../InputField/InputField";
 import useInputChange from "../../hooks/useInputChange";
 import axios from "axios";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Profile = () => {
 
@@ -16,7 +17,7 @@ const Profile = () => {
     email: "",
     phoneNumber: "",
     address: "",
-    // profileImg:""
+    profileImg:""
   });
 
   const handleSubmit = (e) => {
@@ -49,15 +50,18 @@ const Profile = () => {
       if (res.data.result) {
            setUser(res.data.result)
       }
+      toast.success(res.data.message, {
+        position: toast.POSITION.TOP_RIGHT,
+        theme: "dark",
+      });
     }).catch((error)=>{
-        alert(error.message)
+        toast.error(`${error.message}`, { position: toast.POSITION.TOP_RIGHT ,theme: "dark",});
     });
   };
 
   return (
     <div>
       <Navbar />
-
       <div className="profile_wrapper flex items-center justify-center mt-12">
         <div className="profile_container">
           <p className="text-5xl text-red-600 font-bold mt-5 text-center">
@@ -65,7 +69,7 @@ const Profile = () => {
           </p>
 
           <div className="profile_img mt-10 text-center">
-            <img src={"./profile/avtar1.png"} alt="" className="m-auto" />
+            <img src={user.profileImg} alt="" className="m-auto" />
           </div>
 
           <div className="profile_form m-auto mt-12">

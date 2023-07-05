@@ -7,6 +7,8 @@ import PaginatedItems from "../Pagination/Pagination";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import moment from "moment";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Orders = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -20,67 +22,67 @@ const Orders = () => {
       method: "get",
     })
       .then((response) => {
-        setOrders(response.data.result);
+        setOrders(
+          response.data.result.filter((item) => item.status != "PENDING")
+        );
+        setTotalPages(Math.ceil(response.data.result.length / itemsPerPage));
       })
       .catch((error) => {
-        alert(error);
+        toast.error(`${error.message}`, {
+          position: toast.POSITION.TOP_RIGHT,
+          theme: "dark",
+        });
         console.log(error);
       });
   };
 
-    useEffect(() => {
-        fetchData();
-    }, [currentPage]);
+  useEffect(() => {
+    fetchData();
+  }, [currentPage]);
 
-    return (
-        <div>
-            <Navbar />
-            <div className="orders_wrapper profile_wrapper flex items-center justify-center flex-col">
-                <div className="orders_container profile_container">
-                    <p className="text-4xl text-red-600 font-bold  text-center">
-                        Order History
-                    </p>
+  return (
+    <div>
+      <Navbar />
+      <div className="orders_wrapper profile_wrapper flex items-center justify-center flex-col">
+        <div className="orders_container profile_container">
+          <p className="text-4xl text-red-600 font-bold  text-center">
+            Order History
+          </p>
 
-                    <div className="transactions p-3">
-                        <div className="transaction_info ">
-                            {orders.map((item) => {
-                                return (
-                                    <div className="info">
-                                        <div className="info_left">
-                                            <div className="left_img">
-                                                <img src={addAmt} alt="" />
-                                            </div>
-                                            <span className="font-light">
-                                                Product Purchased
-                                            </span>
-                                        </div>
-                                        <div className="info_right">
-                                            <div className="amount text-end">
-                                                ₹ {item.amount}
-                                            </div>
-                                            <div
-                                                className="date font-light mt-3"
-                                                style={{ fontSize: "11px" }}
-                                            >
-                                                {moment(item.createdAt).format(
-                                                    "DD-MM-YYYY h:mm A"
-                                                )}
-                                            </div>
-                                        </div>
-                                    </div>
-                                );
-                            })}
-                            {orders.length == 0 ? (
-                                <p className="text-white">
-                                    No Orders Yet!{" "}
-                                    <p className="text-[red]">
-                                        <Link to={"/"}>Play Now</Link>
-                                    </p>
-                                </p>
-                            ) : (
-                                ""
-                            )}
-                            {/* <div className="info">
+          <div className="transactions p-3">
+            <div className="transaction_info ">
+              {orders.map((item) => {
+                return (
+                  <div className="info">
+                    <div className="info_left">
+                      <div className="left_img">
+                        <img src={addAmt} alt="" />
+                      </div>
+                      <span className="font-light">Product Purchased</span>
+                    </div>
+                    <div className="info_right">
+                      <div className="amount text-end">₹ {item.amount}</div>
+                      <div
+                        className="date font-light mt-3"
+                        style={{ fontSize: "11px" }}
+                      >
+                        {moment(item.createdAt).format("DD-MM-YYYY h:mm A")}
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+              {orders.length == 0 ? (
+                <p className="text-white">
+                  No Orders Yet!{" "}
+                  <p className="text-[red]">
+                    <Link to={"/"}>Play Now</Link>
+                  </p>
+                </p>
+              ) : (
+                ""
+              )}
+              {/* <div className="info">
                 <div className="info_left">
                   <div className="left_img">
                     <img src={addAmt} alt="" />
@@ -134,23 +136,23 @@ const Orders = () => {
                   </div>
                 </div>
               </div> */}
-                        </div>
-                    </div>
-                </div>
             </div>
-
-            <div className="mt-5 text-center">
-                <PaginatedItems
-                    itemsPerPage={itemsPerPage}
-                    setitemsPerPage={setitemsPerPage}
-                    currentPage={currentPage}
-                    setCurrentPage={setCurrentPage}
-                    totalPages={totalPages}
-                    setTotalPages={setTotalPages}
-                />
-            </div>
+          </div>
         </div>
-    );
+      </div>
+
+      <div className="mt-5 text-center">
+        <PaginatedItems
+          itemsPerPage={itemsPerPage}
+          setitemsPerPage={setitemsPerPage}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+          totalPages={totalPages}
+          setTotalPages={setTotalPages}
+        />
+      </div>
+    </div>
+  );
 };
 
 export default Orders;

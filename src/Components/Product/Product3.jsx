@@ -7,6 +7,9 @@ import Modal from "../Modal/Modal";
 import Navbar from "../Navbar/Navbar";
 import Timer from "../Timer/Timer";
 import ProductHeader from "./ProductHeader";
+import "./Product.css";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Product3 = () => {
   const [product, setProduct] = useState({});
@@ -17,7 +20,7 @@ const Product3 = () => {
   const userId = localStorage.getItem("userId");
   const [isShow, setIsShow] = useState(false);
   const [showModal, setShowModal] = useState(false);
-  const [modelMessage,setModelMessage] = useState("")
+  const [modelMessage, setModelMessage] = useState("");
   const navigate = useNavigate();
 
   const openModal = () => {
@@ -46,7 +49,10 @@ const Product3 = () => {
         setIsShow(true);
       })
       .catch((error) => {
-        alert(error);
+        toast.error(`${error.message}`, {
+          position: toast.POSITION.TOP_RIGHT,
+          theme: "dark",
+        });
         console.log(error);
       });
   };
@@ -60,17 +66,20 @@ const Product3 = () => {
     })
       .then((response) => {
         if (response.data.result) {
-          alert(response.data.message);
+          toast.success(`${response.data.message}`, {
+            position: toast.POSITION.TOP_RIGHT,
+            theme: "dark"
+          });
           navigate(
             `/product4?productId=${response.data.result.productId}&auctionid=${response.data.result._id}`
           );
         } else {
           // openModal();
-         setModelMessage(response.data.message)
+          setModelMessage(response.data.message);
         }
       })
       .catch((error) => {
-        alert(error.message);
+        toast.error(`${error.message}`, { position: toast.POSITION.TOP_RIGHT ,theme: "dark"});
       });
   };
 
@@ -84,8 +93,8 @@ const Product3 = () => {
       <Navbar />
       <div className="container mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 sm:grid-cols-1 gap-6">
-          <div className="flex justify-center text-3xl rounded-xl my-32 md:mt32">
-            <img src="/img/1.jpeg" className="product_img" />
+          <div className="flex justify-center text-3xl rounded-xl my-32 product_img_container ">
+            <img src={product?.productPageImageUrl} className="product_img" />
           </div>
           <div className="flex justify-center text-3xl my-32 md:mb-32">
             <div
@@ -105,7 +114,6 @@ const Product3 = () => {
                         height={50}
                         fontSize={35}
                       />
-                      
                     ) : (
                       <FlipDate
                         value={auction.startTime}
@@ -117,7 +125,6 @@ const Product3 = () => {
                   ) : (
                     ""
                   )}
-                  
                 </h1>
               </div>
               <div className="flex w-full justify-around mb-4  align-h">
@@ -144,24 +151,32 @@ const Product3 = () => {
 
                 <div className="product_points">
                   <div className="points_container">
-                    <div className="flex mb-6 gap-7">
+                    <div className="flex mb-6 points_gap">
                       <div className="point flex gap-2">
                         <img src="/img/productPoint.svg" alt="" />
-                        <p className="text-white">Dual Shock Sensor</p>
+                        <p className="text-white">
+                          {product?.features?.feature1}
+                        </p>
                       </div>
                       <div className="point flex gap-2">
                         <img src="/img/productPoint.svg" alt="" />
-                        <p className="text-white">3D audio</p>
+                        <p className="text-white">
+                          {product?.features?.feature2}
+                        </p>
                       </div>
                     </div>
-                    <div className="flex gap-7 mb-8">
+                    <div className="flex mb-8 points_gap">
                       <div className="point flex gap-2">
                         <img src="/img/productPoint.svg" alt="" />
-                        <p className="text-white">VR Set Compatible</p>
+                        <p className="text-white">
+                          {product?.features?.feature3}
+                        </p>
                       </div>
                       <div className="point flex gap-2">
                         <img src="/img/productPoint.svg" alt="" />
-                        <p className="text-white">Precision Tracking</p>
+                        <p className="text-white">
+                          {product?.features?.feature4}
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -175,7 +190,7 @@ const Product3 = () => {
                     fontWeight: "700",
                     fontSize: "20px",
                   }}
-                  onClick={()=>setShowModal(true)}
+                  onClick={() => setShowModal(true)}
                 >
                   Participate
                 </button>

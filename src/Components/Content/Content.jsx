@@ -14,7 +14,8 @@ import { FlipDate } from "../flipTimer/FlipDate";
 import AuctionPolling from "../AuctionPolling/AuctionPolling";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Content = () => {
   const responsive = {
@@ -46,7 +47,7 @@ const Content = () => {
         setAuctions(response.data.result);
       })
       .catch((error) => {
-        alert(error);
+        toast.error(`${error.message}`, { position: toast.POSITION.TOP_RIGHT ,theme: "dark",});
         console.log(error);
       });
   };
@@ -61,7 +62,7 @@ const Content = () => {
 
   useEffect(() => {
     setAuctions(auctions);
-  }, [auctions]);
+  }, []);
 
   setInterval(()=>{
     setMiliseconds(millisecond - 1)
@@ -86,6 +87,7 @@ const Content = () => {
         itemClass="carousel-item-padding-40-px"
       >
         {auctions.map((item, index) => {
+          console.log(item)
           return (
             <div className="content-flex content-fix" key={index}>
               <p className="timer-title">
@@ -101,13 +103,13 @@ const Content = () => {
                 )}
               </h1>
               <img
-                src="/img/1.jpeg"
+                src={item?.productId?.homePageImageUrl}
                 width={"100%"}
               />
               <button
                 className="font-semibold"
                 style={{ fontSize: "14px" }}
-                onClick={() => redirect(item.productId, item._id)}
+                onClick={() => redirect(item.productId._id, item._id)}
               >
                 Participate
               </button>

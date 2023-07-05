@@ -12,6 +12,9 @@ import PaginatedItems from "../Pagination/Pagination";
 import axios from "axios";
 import moment from "moment";
 import Footer from "../Footer/Footer";
+import { useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Wallet = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -19,7 +22,7 @@ const Wallet = () => {
   const userId = localStorage.getItem("userId");
   const [itemsPerPage, setitemsPerPage] = useState(10);
   const [walletData, setWalletData] = useState([]);
-const [balance,setBalance] = useState({})
+  const [balance, setBalance] = useState({});
   const fetchData = () => {
     axios({
       url: `http://localhost:8080/v1/transaction/list/user/${userId}?page=${currentPage}&limit=${itemsPerPage}`,
@@ -27,28 +30,37 @@ const [balance,setBalance] = useState({})
     })
       .then((response) => {
         setWalletData(response.data.result);
+        setTotalPages(Math.ceil(response.data.result.length / itemsPerPage));
       })
       .catch((error) => {
-        alert(error);
+        toast.error(`${error.message}`, {
+          position: toast.POSITION.TOP_RIGHT,
+          theme: "dark",
+        });
         console.log(error);
       });
 
-      axios({
-        url: `http://localhost:8080/v1/users/wallet/balance/${userId}`,
-        method: "get",
+    axios({
+      url: `http://localhost:8080/v1/users/wallet/balance/${userId}`,
+      method: "get",
+    })
+      .then((response) => {
+        setBalance(response.data.result);
       })
-        .then((response) => {
-          setBalance(response.data.result);
-        })
-        .catch((error) => {
-          alert(error);
-          console.log(error);
+      .catch((error) => {
+        toast.error(`${error.message}`, {
+          position: toast.POSITION.TOP_RIGHT,
+          theme: "dark",
         });
+        console.log(error);
+      });
   };
 
   useEffect(() => {
     fetchData();
   }, [currentPage]);
+
+  const navigate = useNavigate();
 
   return (
     <div>
@@ -64,11 +76,21 @@ const [balance,setBalance] = useState({})
             <p className="current_bal text-red-600">CURRENT BALANCE</p>
 
             <div className="mt-6">
-            <p style={{color:"white",letterSpacing:"2px", fontSize:"35px"}}>₹{balance.walletBalance}</p>
+              <p
+                style={{
+                  color: "white",
+                  letterSpacing: "2px",
+                  fontSize: "35px",
+                }}
+              >
+                ₹{balance.walletBalance}
+              </p>
             </div>
 
             <div className="add_money mt-6">
-              <button type="submit">Add Money</button>
+              <button onClick={() => navigate("/addmoney")} type="submit">
+                Add Money
+              </button>
             </div>
           </div>
 
@@ -120,15 +142,15 @@ const [balance,setBalance] = useState({})
       </div>
 
       <div className="mt-5 text-center">
-          <PaginatedItems
-            itemsPerPage={itemsPerPage}
-            setitemsPerPage={setitemsPerPage}
-            currentPage={currentPage}
-            setCurrentPage={setCurrentPage}
-            totalPages={totalPages}
-            setTotalPages={setTotalPages}
-          />
-        </div>
+        <PaginatedItems
+          itemsPerPage={itemsPerPage}
+          setitemsPerPage={setitemsPerPage}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+          totalPages={totalPages}
+          setTotalPages={setTotalPages}
+        />
+      </div>
       {/* <Footer /> */}
     </div>
   );

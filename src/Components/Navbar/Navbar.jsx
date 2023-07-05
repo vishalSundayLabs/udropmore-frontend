@@ -6,7 +6,6 @@ import "./Navbar.scss";
 const Navbar = () => {
     const [isAuth, setIsAuth] = useState(false);
     const [openMenu, setOpenMenu] = useState(false);
-
     const navigate = useNavigate()
 
     return (
@@ -18,8 +17,9 @@ const Navbar = () => {
                 <div className="flex items-center ">
                     {isAuth && (
                         <p>
-                            <Link to="/login">Login </Link> /{" "}
-                            <Link to={"/signup"}>Sign up</Link>
+                            <Link to="/login">Login </Link> 
+                            {/* /{" "} */}
+                            {/* <Link to={"/signup"}>Sign up</Link> */}
                         </p>
                     )}
                     {!isAuth && (
@@ -33,7 +33,7 @@ const Navbar = () => {
                             <div className="round-box">
                                 <p>0</p>
                             </div>
-                            <div className="outer-box" onClick={()=> navigate('/orders')}>
+                            <div className="outer-box" onClick={()=> navigate('/cart')}>
                                 <svg
                                     width="17"
                                     style={{ display: "initial" }}

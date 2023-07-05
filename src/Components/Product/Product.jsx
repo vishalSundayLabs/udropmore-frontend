@@ -6,6 +6,8 @@ import "./Product.css";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { FlipDate } from "../flipTimer/FlipDate";
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Product = () => {
   const [product, setProduct] = useState({});
@@ -28,7 +30,7 @@ const Product = () => {
         );
       })
       .catch((error) => {
-        alert(error);
+        toast.error(`${error.message}`, { position: toast.POSITION.TOP_RIGHT,theme: "dark" });
         console.log(error);
       });
   };
@@ -36,13 +38,13 @@ const Product = () => {
     fetchData();
     return () => {};
   }, []);
-  console.log("line 39", auction);
+
   return (
     <>
       <ProductHeader />
       <div className="container mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 sm:grid-cols-1 gap-6">
-          <div className="flex justify-center text-3xl rounded-xl my-32 md:mt32">
+          <div className="flex justify-center text-3xl rounded-xl my-32 md:mt32 product_img_container ">
             <img src="/img/product.png" />
           </div>
           <div className="flex justify-center text-3xl my-32 md:mb-32">

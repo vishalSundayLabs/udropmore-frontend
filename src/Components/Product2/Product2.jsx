@@ -5,6 +5,8 @@ import Footer from "../Footer/Footer";
 import ProductHeader from "../Product/ProductHeader";
 import Timer from "../Timer/Timer";
 import "./Product2.css";
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Product2 = () => {
   const location = useLocation();
@@ -36,7 +38,7 @@ const Product2 = () => {
         console.log("line 35", auction);
       })
       .catch((error) => {
-        alert(error);
+        toast.error(`${error.message}`, { position: toast.POSITION.TOP_RIGHT ,theme: "dark"});
         console.log(error);
       });
   };
@@ -82,11 +84,11 @@ const Product2 = () => {
       data: { bidAmount: dropPrice ? dropPrice : auction.dropStartPrice },
     })
       .then((response) => {
-        alert(response.data.message);
+        toast.success(`${response.data.message}`, { position: toast.POSITION.TOP_RIGHT,theme: "dark" });
         navigate("/congratulations");
       })
       .catch((error) => {
-        alert(error);
+        toast.error(`${error.message}`, { position: toast.POSITION.TOP_RIGHT,theme: "dark" });
         console.log(error);
       });
   };
@@ -96,7 +98,7 @@ const Product2 = () => {
       <ProductHeader />
       <div className="container mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 sm:grid-cols-1 gap-6">
-          <div className="flex justify-center text-3xl rounded-xl my-32 md:mt32">
+          <div className="flex justify-center text-3xl rounded-xl my-32 md:mt32 product_img_container ">
             <img src="/img/product.png" />
           </div>
           <div className="flex justify-center text-3xl my-32 md:mb-32 min-[200]:my-0">

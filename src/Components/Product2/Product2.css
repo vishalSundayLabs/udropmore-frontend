@@ -51,6 +51,11 @@
     font-weight: 700;
 }
 
+.product_img{
+    width: 600px;
+    height: 650px;
+}
+
 @media screen and (max-width:480px) {
     .price-box p:first-child {
         font-size: 14px;
@@ -65,7 +70,7 @@
         font-weight: 300;
     }
     .product_img{
-        height: 132%;
+        margin-bottom: 0px !important;
     }
 
     .play-station {

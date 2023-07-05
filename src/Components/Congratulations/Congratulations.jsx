@@ -1,9 +1,43 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
 import "./Congrats.scss";
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const Congratulations = () => {
+  const location = useLocation();
+  const userId = localStorage.getItem("userId");
+  const navigate = useNavigate();
+  const queryParams = new URLSearchParams(location.search);
+  const [rank, setRank] = useState([]);
+  const auctionId = queryParams.get("auctionid");
+  const productId = queryParams.get("productId")
+
+useEffect(()=>{
+  axios({
+    url: `http://localhost:8080/v1/auction/details/${auctionId}`,
+    method: "get"
+  })
+    .then((response) => {
+      setRank(response.data.result.bidders.filter((item)=> {
+        if(item.userId==userId){
+          return item
+        }
+      }))
+    })
+    .catch((error) => {
+      toast.error(`${error.message}`, { position: toast.POSITION.TOP_RIGHT,theme: "dark", });
+      console.log(error);
+    });
+},[])
+
+const redirect = ()=>{
+  navigate(`/congratulations?auctionid=${auctionId}&productId=${productId}`);
+}
+
     return (
         <>
             <Navbar />
@@ -25,7 +59,7 @@ const Congratulations = () => {
                                 className="font-bold text-white mob_hide"
                                 style={{ fontSize: "32px" }}
                             >
-                                Rank #1
+                                Rank #{rank.length -1 ? rank[rank.length - 1]?.rank : ""}
                             </p>
                             <p
                                 className="font-bold text-red-600 mob_hide"
@@ -67,7 +101,7 @@ const Congratulations = () => {
 
                         <div className="pay_btn mt-12">
                             <div className="add_money profile_submit mt-6">
-                                <button type="submit">Go to Pay Now</button>
+                                <button style={{cursor:"pointer"}} onClick={redirect}>Go to Pay Now</button>
                             </div>
                         </div>
                     </div>

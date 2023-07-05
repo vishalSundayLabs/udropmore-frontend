@@ -2,9 +2,9 @@ import React from "react";
 import "./Pagination.scss";
 
 export default function Pagination(props) {
-  const { currentPage, setCurrentPage } = props;
+  const { currentPage, setCurrentPage, totalPages } = props;
   const handlePageination = (e) => {
-    if (currentPage >= 1) {
+    if (currentPage >= 1 && currentPage < totalPages) {
       if (e.target.name == "next") {
         setCurrentPage(currentPage + 1);
       }

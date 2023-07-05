@@ -20,13 +20,15 @@ import Product4 from "./Components/Product/Product4";
 import About from "./Components/About/About";
 import PrivacyPolicies from "./Components/PrivacyPolicies/PrivacyPolicies";
 import Congratulations from "./Components/Congratulations/Congratulations"
+import Cart from "./Components/Cart/Cart";
+import VerifyOtp from "./Components/Auth/VerifyOtp";
 
 function App() {
   return (
     <Routes>
       <Route exact path="/" element={<Home />} />
       <Route exact path="/login" element={<Auth />} />
-      <Route exact path="/product" element={<Product />} />
+      {/* <Route exact path="/product" element={<Product />} /> */}
       <Route exact path="/orders" element={<Orders />} />
       <Route exact path="/addmoney" element={<AddMoney />} />
       <Route exact path="/congratulations" element={<Congrats3 />} />
@@ -38,8 +40,11 @@ function App() {
       <Route exact path="/shop/now" element={<Product2 />} />
       <Route exact path="/product2" element={<Product3 />} />
       <Route exact path="/product4" element={<Product4 />} />
+      <Route exact path="/cart" element={<Cart />} />
       <Route exact path="/about" element={<About />} />
       <Route exact path="/policies" element={<PrivacyPolicies />} />
+      <Route exact path="/verify/otp" element={<VerifyOtp />} />
+      <Route exact path="*" element={<p>Page Not found</p>} />
     </Routes>
   );
 }
