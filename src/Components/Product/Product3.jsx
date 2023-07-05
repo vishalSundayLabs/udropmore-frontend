@@ -137,7 +137,7 @@ const Product3 = () => {
                 className="prod_right flex flex-col align-h items-center h-screen w-full h-screer bg-cover bg-center"
                 style={{ color: "black" }}
               >
-                <div className="flex play-station w-full flex text_start">
+                <div className="flex play-station flex text_start">
                   {/* <h1>{product.name}</h1> */}
                   <h1>Play Station5</h1>
                 </div>
