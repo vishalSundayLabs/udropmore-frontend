@@ -88,7 +88,7 @@ const Product3 = () => {
           <div className="flex justify-center text-3xl rounded-xl my-32 product_img_container ">
             <img src="/img/1.jpeg" className="product_img"/>
           </div>
-          <div className="flex justify-center text-3xl my-32 md:mb-32">
+          <div className="flex justify-center text-3xl my-32 md:mb-32 prod_timer">
             <div
               className="flex flex-col align-h items-center h-96 w-full h-96  bg-cover bg-center"
               style={{ color: "black" }}
@@ -134,11 +134,12 @@ const Product3 = () => {
                 </div>
               </div>
               <div
-                className="flex flex-col align-h items-center h-screen w-full h-screer bg-cover bg-center"
+                className="prod_right flex flex-col align-h items-center h-screen w-full h-screer bg-cover bg-center"
                 style={{ color: "black" }}
               >
-                <div className="flex play-station">
-                  <h1>{product.name}</h1>
+                <div className="flex play-station w-full flex text_start">
+                  {/* <h1>{product.name}</h1> */}
+                  <h1>Play Station5</h1>
                 </div>
 
                 <div className="product_points">
