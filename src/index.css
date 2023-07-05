@@ -42,7 +42,26 @@ svg {
 }
 
 @media screen and (max-width: 600px) {
+
+    .prod_right{
+        padding: 0px 20px;
+    }
+
     .product_img_container {
+        margin-top: 0px !important;
         margin-bottom: 0px !important;
     }
+    .product_img_container img{
+        height: 450px !important;
+        object-fit: fill !important;
+    }
+}
+
+
+@media screen and (max-width: 480px) {
+
+    .points_gap{
+        gap: 3rem;
+    }
+    
 }

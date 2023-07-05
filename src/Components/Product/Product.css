@@ -171,8 +171,16 @@
     left: 89px;
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 640px) {
     /* .product_img {
         margin-bottom: 0px !important;
     } */
+
+    .text_start{
+        justify-content: flex-start;
+    }
+
+    .prod_timer{
+        margin-top: 20px !important;
+    }
 }

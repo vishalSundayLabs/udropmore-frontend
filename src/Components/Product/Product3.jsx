@@ -11,6 +11,51 @@ import "./Product.css";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+function resizeImage(url, maxWidth, maxHeight) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+
+    img.onload = () => {
+      let width = img.width;
+      let height = img.height;
+
+      if (width > maxWidth || height > maxHeight) {
+        const aspectRatio = width / height;
+        if (width > maxWidth) {
+          width = maxWidth;
+          height = width / aspectRatio;
+        }
+        if (height > maxHeight) {
+          height = maxHeight;
+          width = height * aspectRatio;
+        }
+      }
+
+      const canvas = document.createElement("canvas");
+      canvas.width = width;
+      canvas.height = height;
+
+      const ctx = canvas.getContext("2d");
+      ctx.drawImage(img, 0, 0, width, height);
+
+      canvas.toBlob(
+        (blob) => {
+          const resizedUrl = URL.createObjectURL(blob);
+          resolve(resizedUrl);
+        },
+        "image/jpeg",
+        0.8
+      );
+    };
+
+    img.onerror = () => {
+      reject(new Error("Failed to load the image."));
+    };
+
+    img.src = url;
+  });
+}
+
 const Product3 = () => {
   const [product, setProduct] = useState({});
   const [auction, setAuction] = useState({});
@@ -47,6 +92,14 @@ const Product3 = () => {
           )[0]
         );
         setIsShow(true);
+
+        resizeImage(product.productPageImageUrl, 600, 650)
+          .then((resizedImageUrl) => {
+            console.log("Resized image URL:", resizedImageUrl);
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
       })
       .catch((error) => {
         toast.error(`${error.message}`, {
@@ -68,7 +121,7 @@ const Product3 = () => {
         if (response.data.result) {
           toast.success(`${response.data.message}`, {
             position: toast.POSITION.TOP_RIGHT,
-            theme: "dark"
+            theme: "dark",
           });
           navigate(
             `/product4?productId=${response.data.result.productId}&auctionid=${response.data.result._id}`
@@ -79,7 +132,10 @@ const Product3 = () => {
         }
       })
       .catch((error) => {
-        toast.error(`${error.message}`, { position: toast.POSITION.TOP_RIGHT ,theme: "dark"});
+        toast.error(`${error.message}`, {
+          position: toast.POSITION.TOP_RIGHT,
+          theme: "dark",
+        });
       });
   };
 
@@ -96,7 +152,7 @@ const Product3 = () => {
           <div className="flex justify-center text-3xl rounded-xl my-32 product_img_container ">
             <img src={product?.productPageImageUrl} className="product_img" />
           </div>
-          <div className="flex justify-center text-3xl my-32 md:mb-32">
+          <div className="flex justify-center text-3xl my-32 md:mb-32 prod_timer">
             <div
               className="flex flex-col align-h items-center h-96 w-full h-96  bg-cover bg-center"
               style={{ color: "black" }}
@@ -142,11 +198,12 @@ const Product3 = () => {
                 </div>
               </div>
               <div
-                className="flex flex-col align-h items-center h-screen w-full h-screer bg-cover bg-center"
+                className="prod_right flex flex-col align-h items-center h-screen w-full h-screer bg-cover bg-center"
                 style={{ color: "black" }}
               >
-                <div className="flex play-station">
-                  <h1>{product.name}</h1>
+                <div className="flex play-station flex text_start">
+                  {/* <h1>{product.name}</h1> */}
+                  <h1>Play Station5</h1>
                 </div>
 
                 <div className="product_points">

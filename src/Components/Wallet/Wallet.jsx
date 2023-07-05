@@ -141,19 +141,19 @@ const Wallet = () => {
         </div>
       </div>
 
-      <div className="mt-5 text-center">
-        <PaginatedItems
-          itemsPerPage={itemsPerPage}
-          setitemsPerPage={setitemsPerPage}
-          currentPage={currentPage}
-          setCurrentPage={setCurrentPage}
-          totalPages={totalPages}
-          setTotalPages={setTotalPages}
-        />
-      </div>
-      {/* <Footer /> */}
-    </div>
-  );
+            <div className="mt-8 text-center mb-6">
+                <PaginatedItems
+                    itemsPerPage={itemsPerPage}
+                    setitemsPerPage={setitemsPerPage}
+                    currentPage={currentPage}
+                    setCurrentPage={setCurrentPage}
+                    totalPages={totalPages}
+                    setTotalPages={setTotalPages}
+                />
+            </div>
+            <Footer />
+        </div>
+    );
 };
 
 export default Wallet;

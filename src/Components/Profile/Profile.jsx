@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import "./Profile.scss";
-import Footer from "../Footer/Footer";
+import profileImg from "../../assets/imgs/profile.svg";
 import Navbar from "../Navbar/Navbar";
 import InputField from "../InputField/InputField";
 import useInputChange from "../../hooks/useInputChange";
+import Footer from "../Footer/Footer";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -117,15 +118,17 @@ const Profile = () => {
                 />
               </div>
 
-              <div className="profile_submit mt-10">
-                <button type="submit">Submit</button>
-              </div>
-            </form>
-          </div>
+                            <div className="profile_submit mt-10">
+                                <button type="submit">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <Footer/>
         </div>
-      </div>
-    </div>
-  );
+    );
 };
 
 export default Profile;

@@ -22,6 +22,7 @@ import PrivacyPolicies from "./Components/PrivacyPolicies/PrivacyPolicies";
 import Congratulations from "./Components/Congratulations/Congratulations"
 import Cart from "./Components/Cart/Cart";
 import VerifyOtp from "./Components/Auth/VerifyOtp";
+import Tnc from "./Components/TnC/Tnc";
 
 function App() {
   return (
@@ -35,7 +36,8 @@ function App() {
       <Route exact path="/congratulations2" element={<Congratulations/>} />
       <Route exact path="/profile" element={<Profile />} />
       <Route exact path="/wallet" element={<Wallet />} />
-      <Route exact path="/tnc" element={<TermsNconditions/>} />
+      {/* <Route exact path="/tnc1" element={<TermsNconditions/>} /> */}
+      <Route exact path="/tnc" element={<Tnc/>} />
       <Route exact path="/paynow" element={<PayNow />} />
       <Route exact path="/shop/now" element={<Product2 />} />
       <Route exact path="/product2" element={<Product3 />} />
