@@ -59,7 +59,7 @@ const redirect = ()=>{
                                 className="font-bold text-white mob_hide"
                                 style={{ fontSize: "32px" }}
                             >
-                                Rank #{rank.length -1 ? rank[rank.length - 1]?.rank : ""}
+                                Rank #{rank.length ? rank[rank.length - 1]?.rank : ""}
                             </p>
                             <p
                                 className="font-bold text-red-600 mob_hide"

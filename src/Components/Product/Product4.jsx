@@ -28,21 +28,11 @@ const Product4 = () => {
   const [isShow, setIsShow] = useState(false);
   const [lastOneMins, setLastOneMins] = useState(true);
   const [lastOneMinsCount, setLastOneMinsCount] = useState(59);
-
+  const [priceLowPerSecond, setPriceLowPerSecond] = useState(0);
+  let audio = new Audio("/music/beep.mp3");;
   //   if(localStorage.getItem("changePrice")){
   //     setDropPrice(localStorage.getItem("changePrice"))
   //   }
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      const audio = new Audio("/music/beep.mp3");
-      audio.play();
-    }, 1000);
-
-    return () => {
-      clearInterval(interval);
-    };
-  }, []);
 
   const fetchData = async () => {
     await axios({
@@ -51,14 +41,14 @@ const Product4 = () => {
     })
       .then((response) => {
         setProduct(response.data.result.product);
-        console.log("line 29 auction", response.data.result);
         setAuction(
-          response.data.result.auction.filter(
-            (item) => item._id == auctionId
-          )[0]
+          response.data.result.auction.filter((item) => {
+            if (item._id == auctionId) {
+              return item;
+            }
+          })[0]
         );
         setIsShow(true);
-        console.log("line 35", auction);
       })
       .catch((error) => {
         toast.error(`${error.message}`, {
@@ -73,6 +63,18 @@ const Product4 = () => {
     fetchData();
     return () => {};
   }, []);
+
+  function getDateDifferenceInSeconds(date1 = new Date(), date2 = new Date()) {
+    const diffInMilliseconds = Math.abs(
+      new Date(date2).getTime() - new Date(date1).getTime()
+    );
+    const diffInSeconds = Math.floor(diffInMilliseconds / 1000);
+    return diffInSeconds;
+  }
+  const decriment =
+    (Number(auction.dropStartPrice) - Number(auction.lowestDropPrice)) /
+    getDateDifferenceInSeconds(auction?.endTime, auction?.startTime);
+
   let count = 60;
   const priceTimer = () => {
     if (auction?.priceDrop?.length > 0) {
@@ -91,33 +93,15 @@ const Product4 = () => {
             setDropPrice(auction.priceDrop[i].newDropPrice);
           }
         }
-        // let endTimes = new Date(auction.endTime);
-        // let currentTime = new Date();
-        // var dateEndUtc = new Date(endTimes.toISOString());
-        // var dateCurrentUtc = new Date(currentTime.toISOString());
-        // const lastOneMins =
-        //   new Date(dateEndUtc).getTime() - new Date(dateCurrentUtc).getTime() >
-        //   600000
-        //     ? true
-        //     : false;
-        // if (
-        //   new Date(dateEndUtc).getTime() - new Date(dateCurrentUtc).getTime() >
-        //   60000
-        // ) {
-        //   count -= 1;
-        //   setLastOneMinsCount(count);
-        // }
-        // console.log("line 80", lastOneMins);
-        // setLastOneMins(lastOneMins);
         return interval;
       }, 1000);
     }
   };
 
-  useEffect(() => {
-    const interval = priceTimer();
-    return () => clearInterval(interval);
-  }, [auction]);
+  //   useEffect(() => {
+  //     const interval = priceTimer();
+  //     return () => clearInterval(interval);
+  //   }, [auction]);
 
   const handleOnClickBiding = () => {
     axios({
@@ -143,6 +127,27 @@ const Product4 = () => {
       });
   };
 
+  let newPrice = auction.dropStartPrice ? auction.dropStartPrice : 0;
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if(audio){
+        audio.play().catch((error) => {
+            toast.error(`${error.message}`, {
+              position: toast.POSITION.TOP_RIGHT,
+              theme: "dark",
+            });
+          });
+      }
+      newPrice = parseFloat((newPrice - decriment.toFixed(2)).toFixed(2));
+      setPriceLowPerSecond(newPrice);
+    }, 1000);
+    return () => {
+      clearInterval(interval);
+    };
+  }, [auction]);
+
+  console.log("line 141", decriment, priceLowPerSecond);
   return (
     <>
       <Navbar />
@@ -172,9 +177,10 @@ const Product4 = () => {
                   </p>
                 </div>
                 <div className="flex flex-col w-full mb-9 justify-center">
-                  <Flip
+                  {/* <Flip
                     value={dropPrice ? dropPrice : auction.dropStartPrice}
-                  />
+                  /> */}
+                  <Flip value={priceLowPerSecond} />
                   {/* <div></div>
                   <Odometer
                     value={dropPrice ? dropPrice : auction.dropStartPrice}

@@ -72,7 +72,7 @@ const Congrats3 = () => {
                   className="font-bold text-white"
                   style={{ fontSize: "32px" }}
                 >
-                  Rank #{rank.length - 1 ? rank[rank.length - 1]?.rank : ""}
+                  Rank #{rank.length ? rank[rank.length - 1]?.rank : ""}
                 </p>
                 <p
                   className="font-bold text-red-600"
@@ -100,7 +100,7 @@ const Congrats3 = () => {
                   <p className="text-white font-medium text-2xl mb-3">
                     You Only Pay
                   </p>
-                  <p className="fs-32 font-bold text-white">₹{rank.length - 1 ? rank[rank.length - 1]?.biddingAmount:0}</p>
+                  <p className="fs-32 font-bold text-white">₹{rank.length ? rank[rank.length - 1]?.biddingAmount:0}</p>
                 </div>
               </div>
               <div className="pay_btn mt-12">

@@ -4,19 +4,21 @@ import "./Pagination.scss";
 export default function Pagination(props) {
   const { currentPage, setCurrentPage, totalPages } = props;
 
-  const handlePageination = (e) => {
-    if (currentPage >= 1 && currentPage <= totalPages) {
-      if (e.target.name == "next") {
-        setCurrentPage(currentPage + 1);
-      }
-    }
+  const handlePageinationPrev = (e) => {
+  
     if (currentPage > 1) {
-      if (e.target.name == "prev") {
         setCurrentPage(currentPage - 1);
-      }
     }
+   
   };
 
+  const handlePageinationNext = (e)=>{
+
+    if (currentPage >= 1 && currentPage <= totalPages) {
+          setCurrentPage(currentPage + 1);
+      }
+     
+  }
   return (
     <div className="pagination pagi_wrapper">
       <nav aria-label="Page navigation example">
@@ -25,7 +27,7 @@ export default function Pagination(props) {
             <button
               className="block px-3 py-2 ml-0 leading-tight rounded-l-lg pagi_btn"
               name="prev"
-              onClick={handlePageination}
+              onClick={handlePageinationPrev}
             >
               <span className="sr-only">Previous</span>
               <svg
@@ -82,7 +84,7 @@ export default function Pagination(props) {
             <button
               className="block  px-3 py-2 pagi_btn rounded-r-lg"
               name="next"
-              onClick={handlePageination}
+              onClick={handlePageinationNext}
             >
               <span className="sr-only">Next</span>
               <svg

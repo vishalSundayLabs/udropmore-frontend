@@ -66,6 +66,7 @@ const Product3 = () => {
   const [isShow, setIsShow] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [modelMessage, setModelMessage] = useState("");
+  const audio = new Audio("/music/beep.mp3");
   const navigate = useNavigate();
 
   const openModal = () => {
@@ -111,7 +112,7 @@ const Product3 = () => {
   };
 
   const handleParticipate = (auctionId, userId) => {
-    console.log("participating....");
+
     openModal();
     axios({
       method: "put",
@@ -141,8 +142,12 @@ const Product3 = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      const audio = new Audio('/music/beep.mp3');
-      audio.play();
+      audio.play().catch((error) => {
+        toast.error(`${error.message}`, {
+          position: toast.POSITION.TOP_RIGHT,
+          theme: "dark",
+        });
+      });
     }, 1000);
 
     return () => {
@@ -213,8 +218,7 @@ const Product3 = () => {
                 style={{ color: "black" }}
               >
                 <div className="flex play-station flex text_start">
-                  {/* <h1>{product.name}</h1> */}
-                  <h1>Play Station5</h1>
+                  <h1>{product.name}</h1>
                 </div>
 
                 <div className="product_points">

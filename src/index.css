@@ -52,7 +52,7 @@ svg {
         margin-bottom: 0px !important;
     }
     .product_img_container img{
-        height: 360px !important;
+        height: 400px !important;
         object-fit: fill !important;
     }
 }
