@@ -7,6 +7,7 @@ import Timer from "../Timer/Timer";
 import "./Product2.css";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { config } from "../../Configs/Config";
 
 const Product2 = () => {
   const location = useLocation();
@@ -22,7 +23,7 @@ const Product2 = () => {
   const [showTimer, setShowTimer] = useState();
   const fetchData = async () => {
     await axios({
-      url: `http://localhost:8080/v1/product/get/by/id/${queryParams.get(
+      url: `${config()}/v1/product/get/by/id/${queryParams.get(
         "product"
       )}`,
       method: "get",
@@ -79,7 +80,7 @@ const Product2 = () => {
   const handleOnClickBiding = () => {
     console.log("line 85", dropPrice);
     axios({
-      url: `http://localhost:8080/v1/auction/bid/${auctionId}/${userId}`,
+      url: `${config()}/v1/auction/bid/${auctionId}/${userId}`,
       method: "put",
       data: { bidAmount: dropPrice ? dropPrice : auction.dropStartPrice },
     })

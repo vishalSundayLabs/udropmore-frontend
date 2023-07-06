@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import moment from "moment";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { config } from "../../Configs/Config";
 
 const Cart = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -18,7 +19,7 @@ const Cart = () => {
   const [orders, setOrders] = useState([]);
   const fetchData = () => {
     axios({
-      url: `http://localhost:8080/v1/order/cart/${userId}?page=${currentPage}&limit=${itemsPerPage}`,
+      url: `${config()}/v1/order/cart/${userId}?page=${currentPage}&limit=${itemsPerPage}`,
       method: "get",
     })
       .then((response) => {

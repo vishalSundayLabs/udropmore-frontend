@@ -11,6 +11,7 @@ import "./Product.css";
 import Odometer from "react-odometerjs";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { config } from "../../Configs/Config";
 
 const Product4 = () => {
   const location = useLocation();
@@ -36,7 +37,7 @@ const Product4 = () => {
 
   const fetchData = async () => {
     await axios({
-      url: `http://localhost:8080/v1/product/get/by/id/${productId}`,
+      url: `${config()}/v1/product/get/by/id/${productId}`,
       method: "get",
     })
       .then((response) => {
@@ -105,7 +106,7 @@ const Product4 = () => {
 
   const handleOnClickBiding = () => {
     axios({
-      url: `http://localhost:8080/v1/auction/bid/${auctionId}/${userId}`,
+      url: `${config()}/v1/auction/bid/${auctionId}/${userId}`,
       method: "put",
       data: { bidAmount: dropPrice ? dropPrice : auction.dropStartPrice },
     })

@@ -10,6 +10,7 @@ import ProductHeader from "./ProductHeader";
 import "./Product.css";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { config } from "../../Configs/Config";
 
 function resizeImage(url, maxWidth, maxHeight) {
   return new Promise((resolve, reject) => {
@@ -81,7 +82,7 @@ const Product3 = () => {
   const fetchData = async () => {
     await axios
       .get(
-        `http://localhost:8080/v1/product/get/by/id/${queryParams.get(
+        `${config()}/v1/product/get/by/id/${queryParams.get(
           "productId"
         )}`
       )
@@ -116,7 +117,7 @@ const Product3 = () => {
     openModal();
     axios({
       method: "put",
-      url: `http://localhost:8080/v1/auction/participate/${auctionId}/${userId}`,
+      url: `${config()}/v1/auction/participate/${auctionId}/${userId}`,
     })
       .then((response) => {
         if (response.data.result) {

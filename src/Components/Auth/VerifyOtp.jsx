@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { config } from "../../Configs/Config";
 
 const VerifyOtp = () => {
   const phoneNumber = localStorage.getItem("phone");
@@ -25,7 +26,7 @@ const VerifyOtp = () => {
     console.log(otp.otp1 + otp.otp2 + otp.otp3 + otp.otp4);
     await axios({
       method: "post",
-      url: `http://localhost:8080/v1/auth/verifyOtp`,
+      url: `${config()}/v1/auth/verifyOtp`,
       data: {
         phoneNumber: phoneNumber,
         otp: Number(otp.otp1 + otp.otp2 + otp.otp3 + otp.otp4),

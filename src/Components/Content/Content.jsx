@@ -16,6 +16,7 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { config } from "../../Configs/Config";
 
 const Content = () => {
   const responsive = {
@@ -41,8 +42,9 @@ const Content = () => {
   const navigate = useNavigate();
 
   const fetchData = async () => {
+    console.log("line 45",process.env)
     await axios
-      .get("http://localhost:8080/v1/auction/upcomming")
+      .get(`${config()}/v1/auction/upcomming`)
       .then((response) => {
         setAuctions(response.data.result);
       })
@@ -126,7 +128,7 @@ const Content = () => {
         </div>
       )}
       <AuctionPolling
-        url={"http://localhost:8080/v1/auction/polling"}
+        url={`${config()}/v1/auction/polling`}
         interval={1000}
         retryCount={3}
         states={auctions}

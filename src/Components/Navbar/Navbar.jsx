@@ -5,6 +5,7 @@ import "./Navbar.scss";
 import axios from "axios";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { config } from "../../Configs/Config";
 
 const Navbar = () => {
     const [isAuth, setIsAuth] = useState(false);
@@ -15,7 +16,7 @@ const Navbar = () => {
 
     const fetchData = () => {
         axios({
-          url: `http://localhost:8080/v1/order/cart/${userId}`,
+          url: `${config()}/v1/order/cart/${userId}`,
           method: "get",
         })
           .then((response) => {

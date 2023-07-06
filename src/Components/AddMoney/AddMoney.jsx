@@ -8,6 +8,7 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { config } from "../../Configs/Config";
 
 const AddMoney = () => {
   const userId = localStorage.getItem("userId");
@@ -50,7 +51,7 @@ console.log("line 39",selected,balance)
   const handleAddMoney = () => {
     axios({
       method: "put",
-      url: `http://localhost:8080/v1/users/add/money/${userId}`,
+      url: `${config()}/v1/users/add/money/${userId}`,
       data: { walletBalance: balance },
     })
       .then((res) => {

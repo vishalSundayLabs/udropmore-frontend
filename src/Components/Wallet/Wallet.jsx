@@ -15,6 +15,7 @@ import Footer from "../Footer/Footer";
 import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { config } from "../../Configs/Config";
 
 const Wallet = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -25,7 +26,7 @@ const Wallet = () => {
   const [balance, setBalance] = useState({});
   const fetchData = () => {
     axios({
-      url: `http://localhost:8080/v1/transaction/list/user/${userId}?page=${currentPage}&limit=${itemsPerPage}`,
+      url: `${config()}/v1/transaction/list/user/${userId}?page=${currentPage}&limit=${itemsPerPage}`,
       method: "get",
     })
       .then((response) => {
@@ -41,7 +42,7 @@ const Wallet = () => {
       });
 
     axios({
-      url: `http://localhost:8080/v1/users/wallet/balance/${userId}`,
+      url: `${config()}/v1/users/wallet/balance/${userId}`,
       method: "get",
     })
       .then((response) => {

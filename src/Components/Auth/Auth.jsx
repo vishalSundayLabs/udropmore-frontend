@@ -5,6 +5,7 @@ import "./Auth.css";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
+import { config } from "../../Configs/Config";
 
 const Auth = () => {
   const navigate = useNavigate();
@@ -31,7 +32,7 @@ const Auth = () => {
     e.preventDefault();
     await axios({
       method: "post",
-      url: `http://localhost:8080/v1/auth/sendotp`,
+      url: `${config()}/v1/auth/sendotp`,
       data: { phoneNumber: phoneNumber },
     })
       .then((response) => {

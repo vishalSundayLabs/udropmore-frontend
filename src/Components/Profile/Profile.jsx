@@ -8,6 +8,7 @@ import Footer from "../Footer/Footer";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { config } from "../../Configs/Config";
 
 const Profile = () => {
 
@@ -27,7 +28,7 @@ const Profile = () => {
   };
 
   useEffect(() => {
-    axios.get(`http://localhost:8080/v1/users/${userId}`).then((res) => {
+    axios.get(`${config()}/v1/users/${userId}`).then((res) => {
       if (res.data.result) {
         setUser(res.data.result)
       }
@@ -45,7 +46,7 @@ const Profile = () => {
   const handleUpdateUser = () => {
     axios({
       method: "put",
-      url: `http://localhost:8080/v1/users/update/${userId}`,
+      url: `${config()}/v1/users/update/${userId}`,
       data: user,
     }).then((res) => {
       if (res.data.result) {

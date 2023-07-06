@@ -6,6 +6,7 @@ import Navbar from "../Navbar/Navbar";
 import "./Congrats3.scss";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { config } from "../../Configs/Config";
 
 const Congrats3 = () => {
   const location = useLocation();
@@ -20,7 +21,7 @@ const Congrats3 = () => {
 
   useEffect(() => {
     axios({
-      url: `http://localhost:8080/v1/auction/details/${auctionId}`,
+      url: `${config()}/v1/auction/details/${auctionId}`,
       method: "get",
     })
       .then((response) => {
@@ -32,7 +33,7 @@ const Congrats3 = () => {
           })
         );
         axios({
-          url: `http://localhost:8080/v1/product/get/by/id/${productId}`,
+          url: `${config()}/v1/product/get/by/id/${productId}`,
           method: "get",
         })
           .then((res) => {

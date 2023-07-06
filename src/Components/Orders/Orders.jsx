@@ -10,6 +10,7 @@ import moment from "moment";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Footer from "../Footer/Footer";
+import { config } from "../../Configs/Config";
 
 const Orders = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -19,7 +20,7 @@ const Orders = () => {
   const [orders, setOrders] = useState([]);
   const fetchData = () => {
     axios({
-      url: `http://localhost:8080/v1/order/history/${userId}?page=${currentPage}&limit=${itemsPerPage}`,
+      url: `${config()}/v1/order/history/${userId}?page=${currentPage}&limit=${itemsPerPage}`,
       method: "get",
     })
       .then((response) => {
