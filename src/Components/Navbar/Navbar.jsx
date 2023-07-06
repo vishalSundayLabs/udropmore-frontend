@@ -1,12 +1,34 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import navIcon from "../../assets/imgs/navIcon.svg";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import "./Navbar.scss";
+import axios from "axios";
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Navbar = () => {
     const [isAuth, setIsAuth] = useState(false);
     const [openMenu, setOpenMenu] = useState(false);
     const navigate = useNavigate()
+    const userId = localStorage.getItem("userId")
+    const [items,setItems] = useState(0)
+
+    const fetchData = () => {
+        axios({
+          url: `http://localhost:8080/v1/order/cart/${userId}`,
+          method: "get",
+        })
+          .then((response) => {
+            setItems(response.data.result.length)
+          })
+          .catch((error) => {
+            toast.error(`${error.message}`, { position: toast.POSITION.TOP_RIGHT,theme: "dark", });
+          });
+      };
+    
+        useEffect(() => {
+            fetchData();
+        }, []);
 
     return (
         <div>
@@ -31,7 +53,7 @@ const Navbar = () => {
                                 onClick={() => setOpenMenu(true)}
                             />
                             <div className="round-box">
-                                <p>0</p>
+                                <p>{items}</p>
                             </div>
                             <div className="outer-box" onClick={()=> navigate('/cart')}>
                                 <svg

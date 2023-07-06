@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./Header.css";
 
 import webVideo from "../../assets/vids/webHeader.mp4";
@@ -12,6 +12,8 @@ const HomePage = () => {
 };
 
 const Header = () => {
+
+
   return (
     <>
       <div className="header">

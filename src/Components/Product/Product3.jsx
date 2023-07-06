@@ -140,6 +140,17 @@ const Product3 = () => {
   };
 
   useEffect(() => {
+    const interval = setInterval(() => {
+      const audio = new Audio('/music/beep.mp3');
+      audio.play();
+    }, 1000);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
+
+  useEffect(() => {
     fetchData();
     return () => {};
   }, []);
@@ -159,7 +170,7 @@ const Product3 = () => {
             >
               <div className="flex flex-col w-96 mb-9 justify-center">
                 <p className="timer-title mb-2 text-center">
-                  {auction.status == "ACTIVE" ? "Remaining Time" : "Starts In"}
+                  {auction.status == "ACTIVE" ? "Time Remaining" : "Starts In"}
                 </p>
                 <h1 className="text-5xl w-96 sm:w-64 md:w-64">
                   {isShow ? (

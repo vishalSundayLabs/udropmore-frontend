@@ -121,11 +121,15 @@ const Wallet = () => {
                     </div>
 
                     <div className="info_right">
-                      <div className="amount font-light text-end">
-                        {trn.type == "CREDIT"
-                          ? `+₹ ${trn.amount}`
-                          : `-₹${trn.amount}`}
-                      </div>
+                      {trn.type == "CREDIT" ? (
+                        <div className="amount font-light text-end text-[#73DB43] text-[500]">
+                          +₹{trn.amount}{" "}
+                        </div>
+                      ) : (
+                        <div className="amount font-light text-end text-[#73DB43]">
+                          -₹{trn.amount}{" "}
+                        </div>
+                      )}
                       <div
                         className="date font-light mt-3"
                         style={{ fontSize: "11px" }}
@@ -141,19 +145,19 @@ const Wallet = () => {
         </div>
       </div>
 
-            <div className="mt-8 text-center mb-6">
-                <PaginatedItems
-                    itemsPerPage={itemsPerPage}
-                    setitemsPerPage={setitemsPerPage}
-                    currentPage={currentPage}
-                    setCurrentPage={setCurrentPage}
-                    totalPages={totalPages}
-                    setTotalPages={setTotalPages}
-                />
-            </div>
-            <Footer />
-        </div>
-    );
+      <div className="mt-8 text-center mb-6">
+        <PaginatedItems
+          itemsPerPage={itemsPerPage}
+          setitemsPerPage={setitemsPerPage}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+          totalPages={totalPages}
+          setTotalPages={setTotalPages}
+        />
+      </div>
+      <Footer />
+    </div>
+  );
 };
 
 export default Wallet;

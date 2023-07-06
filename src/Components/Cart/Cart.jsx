@@ -53,7 +53,7 @@ const Cart = () => {
                                                 <img src={addAmt} alt="" />
                                             </div>
                                             <span className="font-light">
-                                                Product Purchased
+                                                {item.productId.name}
                                             </span>
                                         </div>
                                         <div className="info_right">

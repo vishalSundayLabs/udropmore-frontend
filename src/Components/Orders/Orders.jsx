@@ -57,9 +57,13 @@ const Orders = () => {
                   <div className="info">
                     <div className="info_left">
                       <div className="left_img">
-                        <img src={addAmt} alt="" />
+                        {item.productId.productPageImageUrl ? (
+                          <img src={item.productId.productPageImageUrl} width="25px" style={{borderRadius:"15px"}} alt="porudct img" />
+                        ) : (
+                          <img src={addAmt} alt="" />
+                        )}
                       </div>
-                      <span className="font-light">Product Purchased</span>
+                      <span className="font-light">{item.productId.name}</span>
                     </div>
                     <div className="info_right">
                       <div className="amount text-end">₹ {item.amount}</div>
@@ -153,7 +157,7 @@ const Orders = () => {
         />
       </div>
 
-            <Footer/>
+      <Footer />
     </div>
   );
 };

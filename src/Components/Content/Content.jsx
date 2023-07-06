@@ -95,7 +95,7 @@ const Content = () => {
             return (
               <div className="content-flex content-fix" key={index}>
                 <p className="timer-title">
-                  {item.status == "ACTIVE" ? "Remaining Time" : "Starts In"}
+                  {item.status == "ACTIVE" ? "Time Remaining" : "Starts In"}
                 </p>
                 <h1 className="text-2xl">
                   {item.status == "ACTIVE" ? (

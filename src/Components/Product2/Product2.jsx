@@ -127,7 +127,7 @@ const Product2 = () => {
                 <div className="flex flex-col mb-4 gap-6 mb-12">
                   {/* {
                      true == true ?  <>
-                     <h1 className="text-[red] font-extrabold">Remaining Time</h1>
+                     <h1 className="text-[red] font-extrabold">Time Remaining</h1>
                      <Timer
                        interval={
                          new Date(auction.startTime).valueOf() -

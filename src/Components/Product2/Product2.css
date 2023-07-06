@@ -74,8 +74,9 @@
     }
 
     .play-station {
-        width: 100%!;
+        width: 100% !important;
         margin-left: 0px;
+        margin-bottom: 15px;
     }
     .play-station2 {
         margin-left: 0px;
@@ -85,6 +86,9 @@
         font-size: 14px;
         color: #FFFFFF99;
         font-weight: 300;
+    }
+    .points_container div{
+        margin-bottom: 0.5rem !important;
     }
     .points_container button{
         font-size: 20px;
